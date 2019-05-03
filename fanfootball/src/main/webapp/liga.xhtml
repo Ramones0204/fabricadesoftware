@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+
+		<p:panel header="Gestão de Ligas" id="panel">
+			<h:panelGrid columns="2">
+				<h:outputText value="Nome"></h:outputText>
+				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
+				<p:commandButton actionListener="#{LigaControl.confirmar }"
+					value="Confirmar" update="ligas, panel"></p:commandButton>
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dataTable id="ligas" value="#{LigaControl.ligas }" var="cont"
+			width="100%" emptyMessage="Sem registros">
+			<f:facet name="header">
+				<h:outputText value="Lista de Ligas"></h:outputText>
+			</f:facet>
+			<p:column sortBy="#{cont.id}" width="15%">
+				<f:facet name="header">
+					<h:outputText value="ID"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.id}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.nomeLiga}" >
+				<f:facet name="header">
+					<h:outputText value="Nome Liga"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.nomeLiga}"></h:outputText>
+			</p:column>
+			
+			<p:column width="3%">
+				<p:rowEditor />				
+
+			</p:column>
+
+			
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context displayName="fanfootball" path="/fanfootball" reloadable="true">
+
+   <Resource 
+      auth="Container" 
+      driverClassName="org.postgresql.Driver"
+      maxActive="10" 
+      maxIdle="3" 
+      name="jdbc/fanfootball" 
+      password="1104saopaulo"
+      type="javax.sql.DataSource" 
+      url="jdbc:postgresql://localhost/fanfootball"
+      username="postgres" />
+
+</Context>

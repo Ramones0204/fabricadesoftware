@@ -6,9 +6,9 @@
 	<groupId>br.com.senai.fatesg</groupId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<artifactId>primefaces</artifactId>
-	<name>primefaces</name>
-	<url>http://inpai.com.br/primefaces</url>
+	<artifactId>fanfootball</artifactId>
+	<name>fanfootball</name>
+	<url>http://inpai.com.br/fanfootball</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

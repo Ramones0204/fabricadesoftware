@@ -27,13 +27,20 @@ public class CargoControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		try {
+		if(cargo.getId() == 0) {
+			try {
+				cargoDao.incluir(cargo);
+				listar(evt);
+				cargo = new Cargo();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		} else {
 			cargoDao.alterar(cargo);
 			listar(evt);
 			cargo = new Cargo();
-		} catch (Exception e) {
-			// TODO: handle exception
 		}
+		
 	}
 
 	public void listar(ActionEvent evt) {
@@ -43,7 +50,20 @@ public class CargoControl {
 			e.getMessage();
 		}
 	}
-
+	
+	public void selecionarCargosParaEdicao(Cargo cargo) {
+		try {
+			this.cargo = cargoDao.consultar(cargo.getId());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public void excluir(Cargo cargo) {
+		cargoDao.excluirPorId(cargo.getId());
+		cargos = cargoDao.listar();
+	}
+	
 	public Cargo getCargo() {
 		return cargo;
 	}

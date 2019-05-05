@@ -7,10 +7,12 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
+
 
 		<p:panel header="Gestão de Cargo" id="panel">
 			<h:panelGrid columns="2">
+				<h:outputText value="Id"></h:outputText>
+				<p:inputText value="#{CargoControl.cargo.id }"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{CargoControl.cargo.nomeCargo }"></p:inputText>
 				<h:outputText value="Salario"></h:outputText>
@@ -31,24 +33,32 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.nomeCargo}" >
+			<p:column sortBy="#{cont.nomeCargo}">
 				<f:facet name="header">
 					<h:outputText value="Nome Cargo"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.nomeCargo}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.salario }"  width="25%">
+			<p:column sortBy="#{cont.salario }" width="25%">
 				<f:facet name="header">
 					<h:outputText value="Salario"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.salario}"></h:outputText>
 			</p:column>
-			<p:column width="3%">
-				<p:rowEditor />				
+			
+			<p:column width="5%">
 
+				<p:commandButton icon="ui-icon-trash"
+					style="width: 20px; height:20px;"
+					actionListener="#{CargoControl.excluir(cont)}" update="cargos">
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-pencil"
+					style="width:20px; height:20px;"
+					actionListener="#{CargoControl.selecionarCargosParaEdicao(cont)}"
+					update="cargos">
+				</p:commandButton>
 			</p:column>
 
-			
 		</p:dataTable>
 
 	</ui:define>

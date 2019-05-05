@@ -58,16 +58,6 @@ public class LigaControl {
 
 	}
 
-	public void alterar(Liga liga) {
-		try {
-			ligaDao.alterar(liga);
-			liga = new Liga();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-
-
 	public void selecionarLigaParaEdicao(Liga liga) {
 
 		try {

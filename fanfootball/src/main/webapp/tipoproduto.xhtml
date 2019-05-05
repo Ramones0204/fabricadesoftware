@@ -10,6 +10,8 @@
 
 		<p:panel header="Tipo Produto" id="panel">
 			<h:panelGrid columns="2">
+				<h:outputText value="Id"></h:outputText>
+				<p:inputText value="#{TipoProdutoControl.tipoProduto.id}"></p:inputText>
 				<h:outputText value="Descrição"></h:outputText>
 				<p:inputText value="#{TipoProdutoControl.tipoProduto.descricao}"></p:inputText>
 				<p:commandButton actionListener="#{TipoProdutoControl.confirmar }"
@@ -35,9 +37,17 @@
 				<h:outputText value="#{cont.descricao}"></h:outputText>
 			</p:column>
 			
-			<p:column width="3%">
-				<p:rowEditor />				
+			<p:column width="5%">
 
+				<p:commandButton icon="ui-icon-trash"
+					style="width: 20px; height:20px;"
+					actionListener="#{TipoProdutoControl.excluir(cont)}" update="tipoProdutos">
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-pencil"
+					style="width:20px; height:20px;"
+					actionListener="#{TipoProdutoControl.selecionarTipoProduto(cont)}"
+					onclick="PF('dialogNovoContato').show();">
+				</p:commandButton>
 			</p:column>
 
 			

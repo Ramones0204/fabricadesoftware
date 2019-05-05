@@ -24,22 +24,46 @@ public class TipoProdutoControl {
 	public void init() {
 		listar(null);
 	}
-	
+
 	public void confirmar(ActionEvent evt) {
-		try {
+		if (tipoProduto.getId() == 0) {
+			try {
+				tipoProdutoDao.incluir(tipoProduto);
+				listar(evt);
+				tipoProduto = new TipoProduto();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		} else {
 			tipoProdutoDao.alterar(tipoProduto);
 			listar(evt);
 			tipoProduto = new TipoProduto();
-		} catch (Exception e) {
-			// TODO: handle exception
 		}
+
 	}
-	
+
 	public void listar(ActionEvent evt) {
 		try {
 			tiposProdutos = tipoProdutoDao.listar();
 		} catch (Exception e) {
 			e.getMessage();
+		}
+	}
+
+	public void excluir(TipoProduto tipoProduto) {
+		try {
+			tipoProdutoDao.excluirPorId(tipoProduto.getId());
+			tiposProdutos = tipoProdutoDao.listar();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	public void selecionarTipoProduto(TipoProduto tipoProduto) {
+		try {
+			this.tipoProduto = tipoProdutoDao.consultar(tipoProduto.getId());
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 
@@ -55,7 +79,4 @@ public class TipoProdutoControl {
 		return tiposProdutos;
 	}
 
-	
-	
-	
 }

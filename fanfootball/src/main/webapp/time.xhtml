@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+
+		<p:panel header="Times" id="panel">
+			<h:panelGrid columns="2">
+				<h:outputText value="Id"></h:outputText>
+				<p:inputText value="#{TimeControl.time.id}"></p:inputText>
+				<h:outputText value="Nome Time"></h:outputText>
+				<p:inputText value="#{TimeControl.time.nomeTime}"></p:inputText>
+				<h:outputText value="Tipo Time"></h:outputText>
+				<p:selectOneMenu value="#{TimeControl.time.tipoTime}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Clube" itemValue="Clube" />
+					<f:selectItem itemLabel="Seleção" itemValue="Seleção" />
+				</p:selectOneMenu>
+				<h:outputText value="Região"></h:outputText>
+				<p:selectOneMenu value="#{TimeControl.time.regiao}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Norte" itemValue="Norte" />
+					<f:selectItem itemLabel="Nordeste" itemValue="Nordeste" />
+					<f:selectItem itemLabel="Centro-Oeste" itemValue="Centro-Oeste" />
+					<f:selectItem itemLabel="Sudeste" itemValue="Sudeste" />
+					<f:selectItem itemLabel="Sul" itemValue="Sul" />
+				</p:selectOneMenu>
+				<h:outputText value="Estado"></h:outputText>
+				<p:selectOneMenu value="#{TimeControl.time.estado}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Acre" itemValue="AC" />
+					<f:selectItem itemLabel="Alagoas" itemValue="AL" />
+					<f:selectItem itemLabel="Amapá" itemValue="AP" />
+					<f:selectItem itemLabel="Amazonas" itemValue="AM" />
+					<f:selectItem itemLabel="Bahia" itemValue="BA" />
+					<f:selectItem itemLabel="Ceará" itemValue="CE" />
+					<f:selectItem itemLabel="Distrito Federal" itemValue="DF" />
+					<f:selectItem itemLabel="Espírito Santo" itemValue="ES" />
+					<f:selectItem itemLabel="Goiás" itemValue="GO" />
+					<f:selectItem itemLabel="Maranhão" itemValue="MA" />
+					<f:selectItem itemLabel="Mato Grosso " itemValue="MT" />
+					<f:selectItem itemLabel="Mato Grosso do Sul" itemValue="MS	" />
+					<f:selectItem itemLabel="Minas Gerais" itemValue="MG" />
+					<f:selectItem itemLabel="Pará" itemValue="PA" />
+					<f:selectItem itemLabel="Paraíba" itemValue="PB" />
+					<f:selectItem itemLabel="Paraná" itemValue="PR" />
+					<f:selectItem itemLabel="Pernambuco" itemValue="PE" />
+					<f:selectItem itemLabel="Piauí" itemValue="PI" />
+					<f:selectItem itemLabel="Rio de Janeiro" itemValue="RJ" />
+					<f:selectItem itemLabel="Rio Grande do Norte " itemValue="RN" />
+					<f:selectItem itemLabel="Rio Grande do Sul" itemValue="RS" />
+					<f:selectItem itemLabel="Rondônia" itemValue="RO" />
+					<f:selectItem itemLabel="Roraima" itemValue="RR" />
+					<f:selectItem itemLabel="São Paulo" itemValue="SP" />
+					<f:selectItem itemLabel="Sergipe" itemValue="SE" />
+					<f:selectItem itemLabel="Tocantins" itemValue="TO" />
+				</p:selectOneMenu>
+				<h:outputText value="Pais"></h:outputText>
+
+				<p:selectOneMenu value="#{TimeControl.time.pais}"
+					style="width:125px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="África do Sul" itemValue="África do Sul" />
+					<f:selectItem itemLabel="Alemanha" itemValue="Alemanha" />
+					<f:selectItem itemLabel="Angola" itemValue="Angola" />
+					<f:selectItem itemLabel="Arábia Saudita" itemValue="Arábia Saudita" />
+					<f:selectItem itemLabel="Argentina" itemValue="Argentina" />
+					<f:selectItem itemLabel="Armênia" itemValue="Armênia" />
+					<f:selectItem itemLabel="Austrália" itemValue="Austrália" />
+					<f:selectItem itemLabel="Bélgica" itemValue="Bélgica" />
+					<f:selectItem itemLabel="Brasil" itemValue="Brasil" />
+					<f:selectItem itemLabel="Camarões" itemValue="Camarões" />
+					<f:selectItem itemLabel="Canadá" itemValue="Canadá" />
+					<f:selectItem itemLabel="Chile" itemValue="Chile" />
+					<f:selectItem itemLabel="China" itemValue="China" />
+					<f:selectItem itemLabel="Colômbia" itemValue="Colômbia" />
+					<f:selectItem itemLabel="Coréia do Sul" itemValue="Coréia do Sul" />
+					<f:selectItem itemLabel="Costa do Marfim"
+						itemValue="Costa do Marfim" />
+					<f:selectItem itemLabel="Costa Rica" itemValue="Costa Rica" />
+					<f:selectItem itemLabel="Croácia" itemValue="Croácia" />
+					<f:selectItem itemLabel="Dinamarca" itemValue="Dinamarca" />
+					<f:selectItem itemLabel="EUA" itemValue="EUA" />
+					<f:selectItem itemLabel="Egito" itemValue="Egito" />
+					<f:selectItem itemLabel="Emirados Árabes"
+						itemValue="Emirados Árabes" />
+					<f:selectItem itemLabel="Equador" itemValue="Equador" />
+					<f:selectItem itemLabel="Espanha" itemValue="Espanha" />
+					<f:selectItem itemLabel="França" itemValue="França" />
+					<f:selectItem itemLabel="Holanda" itemValue="Holanda" />
+					<f:selectItem itemLabel="Inglaterra" itemValue="Inglaterra" />
+					<f:selectItem itemLabel="Irlanda" itemValue="Irlanda" />
+					<f:selectItem itemLabel="Islândia" itemValue="Islândia" />
+					<f:selectItem itemLabel="Itália" itemValue="Itália" />
+					<f:selectItem itemLabel="Japão" itemValue="Japão" />
+					<f:selectItem itemLabel="México" itemValue="México" />
+					<f:selectItem itemLabel="Nigéria" itemValue="Nigéria" />
+					<f:selectItem itemLabel="Noruega" itemValue="Noruega" />
+					<f:selectItem itemLabel="Nova Zelândia" itemValue="Nova Zelândia" />
+					<f:selectItem itemLabel="Peru" itemValue="Peru" />
+					<f:selectItem itemLabel="Polônia" itemValue="Polônia" />
+					<f:selectItem itemLabel="Porto Rico" itemValue="Porto Rico" />
+					<f:selectItem itemLabel="Rep. Tcheca" itemValue="Rep. Tcheca" />
+					<f:selectItem itemLabel="Rússia" itemValue="Rússia" />
+					<f:selectItem itemLabel="Suécia" itemValue="Suécia" />
+					<f:selectItem itemLabel="Suiça" itemValue="Suiça" />
+					<f:selectItem itemLabel="Turquia" itemValue="Turquia" />
+					<f:selectItem itemLabel="Ucrânia" itemValue="Ucrânia" />
+					<f:selectItem itemLabel="Uruguai" itemValue="Uruguai" />
+					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
+				</p:selectOneMenu>
+				<h:outputText value="Liga"></h:outputText>
+				<p:selectOneMenu
+					style="width:125px">
+					
+				</p:selectOneMenu>
+				
+				<p:commandButton actionListener="#{TimeControl.confirmar }"
+					value="Confirmar" update="times, panel"></p:commandButton>
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dataTable id="times" value="#{TimeControl.times}" var="cont"
+			width="100%" emptyMessage="Sem registros">
+			<f:facet name="header">
+				<h:outputText value="Lista de Times"></h:outputText>
+			</f:facet>
+			<p:column sortBy="#{cont.id}" width="15%">
+				<f:facet name="header">
+					<h:outputText value="ID"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.id}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.nomeTime}">
+				<f:facet name="header">
+					<h:outputText value="Nome Time"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.nomeTime}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.tipoTime}" width="12%">
+				<f:facet name="header">
+					<h:outputText value="Tipo Time"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.tipoTime}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.regiao}" width="10%">
+				<f:facet name="header">
+					<h:outputText value="Região"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.regiao}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.estado}" width="10%">
+				<f:facet name="header">
+					<h:outputText value="Estado"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.estado}"></h:outputText>
+			</p:column>
+			<p:column width="5%">
+				<p:commandButton icon="ui-icon-trash"
+					style="width: 20px; height:20px;"
+					actionListener="#{TimeControl.excluir(cont)}" update="times">
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-pencil"
+					style="width:20px; height:20px;"
+					actionListener="#{TimeControl.selecionarTimes(cont)}"
+					onclick="PF('dialogNovoContato').show();">
+				</p:commandButton>
+			</p:column>
+
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>

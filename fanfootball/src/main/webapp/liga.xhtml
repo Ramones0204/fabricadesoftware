@@ -10,12 +10,19 @@
 
 		<p:panel header="Gestão de Ligas" id="panel">
 			<h:panelGrid columns="2">
+				<h:outputText value="ID"></h:outputText>
+				<p:inputText value="#{LigaControl.liga.id}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
 				<p:commandButton actionListener="#{LigaControl.confirmar }"
-					value="Confirmar" update="ligas, panel"></p:commandButton>
+					value="Salvar" update="ligas, panel"></p:commandButton>
 			</h:panelGrid>
+
+
+
+
 		</p:panel>
+
 
 		<p:dataTable id="ligas" value="#{LigaControl.ligas }" var="cont"
 			width="100%" emptyMessage="Sem registros">
@@ -28,18 +35,25 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.nomeLiga}" >
+			<p:column sortBy="#{cont.nomeLiga}">
 				<f:facet name="header">
 					<h:outputText value="Nome Liga"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.nomeLiga}"></h:outputText>
 			</p:column>
-			
-			<p:column width="3%">
-				<p:rowEditor />				
 
+			<p:column width="5%">
+
+				<p:commandButton icon="ui-icon-trash"
+					style="width: 20px; height:20px;"
+					actionListener="#{LigaControl.excluir(cont)}" update="ligas">
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-pencil"
+					style="width:20px; height:20px;"
+					actionListener="#{LigaControl.selecionarLigaParaEdicao(cont)}"
+					update="ligas">
+				</p:commandButton>
 			</p:column>
-
 			
 		</p:dataTable>
 

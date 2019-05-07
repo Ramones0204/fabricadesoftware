@@ -10,8 +10,8 @@
 
 		<p:panel header="Gestão de Ligas" id="panel">
 			<h:panelGrid columns="2">
-				<h:outputText value="ID"></h:outputText>
-				<p:inputText value="#{LigaControl.liga.id}"></p:inputText>
+				<h:outputText value="ID" ></h:outputText>
+				<p:inputText  disabled="true" value="#{LigaControl.liga.id}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
 				<p:commandButton actionListener="#{LigaControl.confirmar }"

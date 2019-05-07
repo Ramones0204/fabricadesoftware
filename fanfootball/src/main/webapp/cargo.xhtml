@@ -18,7 +18,10 @@
 				<h:outputText value="Salario"></h:outputText>
 				<p:inputMask value="#{CargoControl.cargo.salario }"></p:inputMask>
 				<p:commandButton actionListener="#{CargoControl.confirmar }"
-					value="Confirmar" update="cargos, panel"></p:commandButton>
+					value="Salvar" update="cargos, panel">
+				</p:commandButton>
+				
+					
 			</h:panelGrid>
 		</p:panel>
 

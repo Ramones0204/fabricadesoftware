@@ -7,7 +7,7 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-
+import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Liga;
 import br.com.senai.fatesg.primefaces.persistencia.LigaDao;
@@ -28,18 +28,24 @@ public class LigaControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		if(liga.getId() == 0) {
+		if(liga.getNomeLiga().isEmpty()) {
+			UtilFaces.addMensagemFaces("Favor informar o nome da Liga");
+		}
+		else if(liga.getId() == 0) {
 			try {
 				ligaDao.incluir(liga);
 				listar(evt);
 				liga = new Liga();
+				UtilFaces.addMensagemFaces("Liga Salva com Sucesso");
 			} catch (Exception e) {
 				// TODO: handle exception
+				UtilFaces.addMensagemFaces("Erro ao incluir a Liga");
 			}
 		} else {
 			ligaDao.alterar(liga);
 			listar(evt);
 			liga = new Liga();
+			UtilFaces.addMensagemFaces("Liga alterada com Sucesso");
 		}
 		
 	}
@@ -48,13 +54,20 @@ public class LigaControl {
 		try {
 			ligas = ligaDao.listar();
 		} catch (Exception e) {
-			e.getMessage();
+			UtilFaces.addMensagemFaces("Erro ao listar as ligas");
+
 		}
 	}
 	
 	public void excluir(Liga liga) {
-		ligaDao.excluirPorId(liga.getId());
-		ligas = ligaDao.listar();
+		try {
+			ligaDao.excluirPorId(liga.getId());
+			UtilFaces.addMensagemFaces("Liga " + liga.getNomeLiga() + "Excluida com sucesso");
+			ligas = ligaDao.listar();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 
 	}
 
@@ -68,6 +81,8 @@ public class LigaControl {
 		}
 
 	}
+	
+	
 	public Liga getLiga() {
 		return liga;
 	}

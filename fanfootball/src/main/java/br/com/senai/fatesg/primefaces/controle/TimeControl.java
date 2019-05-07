@@ -32,6 +32,7 @@ public class TimeControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
+		
 		if(time.getId() == 0) {
 			try {
 				timeDao.incluir(time);

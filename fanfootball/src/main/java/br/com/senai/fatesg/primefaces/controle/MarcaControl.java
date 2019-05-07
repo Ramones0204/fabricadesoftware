@@ -10,6 +10,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Marca;
 import br.com.senai.fatesg.primefaces.persistencia.MarcaDao;
@@ -30,18 +31,31 @@ public class MarcaControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		if(marca.getId() == 0) {
+		if(marca.getNomeMarca().isEmpty()) {
+			UtilFaces.addMensagemFaces("Favor informar o Nome Da Marca");
+		}
+		else if(marca.getId() == 0) {
 			try {
 				marcaDao.incluir(marca);
 				listar(evt);
 				marca = new Marca();
+				UtilFaces.addMensagemFaces("Marca salva com Sucesso ");
 			} catch (Exception e) {
 				// TODO: handle exception
+				UtilFaces.addMensagemFaces("Erro ao Incluir a Marca");
 			}
 		} else {
-			marcaDao.alterar(marca);
-			listar(evt);
-			marca = new Marca();
+			try {
+				marcaDao.alterar(marca);
+				UtilFaces.addMensagemFaces("Marca alterada com Sucesso");
+				listar(evt);
+				marca = new Marca();
+			} catch (Exception e) {
+				// TODO: handle exception
+				UtilFaces.addMensagemFaces("Erro ao Altar a Marca");
+
+			}
+			
 		}
 		
 	}
@@ -50,14 +64,19 @@ public class MarcaControl {
 		try {
 			marcas = marcaDao.listar(); 
 		} catch (Exception e) {
-			e.getMessage();
+			UtilFaces.addMensagemFaces("Erro ao listar as marcas ");
 		}
 	}
 
 	public void excluir(Marca marca) {
-		marcaDao.excluirPorId(marca.getId());
-		marcas = marcaDao.listar();
-
+		try {
+			marcaDao.excluirPorId(marca.getId());
+			UtilFaces.addMensagemFaces("Marca " + marca.getNomeMarca() + " Excluida com sucesso");
+			marcas = marcaDao.listar();
+		} catch (Exception e) {
+			// TODO: handle exception
+			UtilFaces.addMensagemFaces("Erro ao Excluir a Marca");
+		}
 	}
 
 	public void selecionarMarcas(Marca marca) {

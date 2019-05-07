@@ -23,6 +23,7 @@ public class Time {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_liga")
+	
 	private Liga liga;
 	
 	public int getId() {

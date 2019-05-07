@@ -15,12 +15,14 @@
 				<h:outputText value="Nome Time"></h:outputText>
 				<p:inputText value="#{TimeControl.time.nomeTime}"></p:inputText>
 				<h:outputText value="Tipo Time"></h:outputText>
+
 				<p:selectOneMenu value="#{TimeControl.time.tipoTime}"
 					style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
 					<f:selectItem itemLabel="Clube" itemValue="Clube" />
 					<f:selectItem itemLabel="Seleção" itemValue="Seleção" />
 				</p:selectOneMenu>
+
 				<h:outputText value="Região"></h:outputText>
 				<p:selectOneMenu value="#{TimeControl.time.regiao}"
 					style="width:125px">
@@ -31,6 +33,7 @@
 					<f:selectItem itemLabel="Sudeste" itemValue="Sudeste" />
 					<f:selectItem itemLabel="Sul" itemValue="Sul" />
 				</p:selectOneMenu>
+
 				<h:outputText value="Estado"></h:outputText>
 				<p:selectOneMenu value="#{TimeControl.time.estado}"
 					style="width:125px">
@@ -62,8 +65,8 @@
 					<f:selectItem itemLabel="Sergipe" itemValue="SE" />
 					<f:selectItem itemLabel="Tocantins" itemValue="TO" />
 				</p:selectOneMenu>
-				<h:outputText value="Pais"></h:outputText>
 
+				<h:outputText value="Pais"></h:outputText>
 				<p:selectOneMenu value="#{TimeControl.time.pais}"
 					style="width:125px">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
@@ -116,12 +119,15 @@
 					<f:selectItem itemLabel="Uruguai" itemValue="Uruguai" />
 					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
 				</p:selectOneMenu>
-				<h:outputText value="Liga"></h:outputText>
-				<p:selectOneMenu
-					style="width:125px">
-					
-				</p:selectOneMenu>
-				
+
+				<h:outputText value="Ligas"></h:outputText>
+				<h:selectOneMenu id="listaLigas"
+					value="#{LigaControl.liga}" >
+					<f:selectItem itemLabel="--Nenhum--" itemValue="" />
+					<f:selectItems value="#{LigaControl.ligas}" var="liga"
+						itemLabel="#{liga.nomeLiga}" itemValue="#{liga.id}" />
+				</h:selectOneMenu>
+
 				<p:commandButton actionListener="#{TimeControl.confirmar }"
 					value="Confirmar" update="times, panel"></p:commandButton>
 			</h:panelGrid>
@@ -134,7 +140,7 @@
 			</f:facet>
 			<p:column sortBy="#{cont.id}" width="15%">
 				<f:facet name="header">
-					<h:outputText value="ID"></h:outputText>
+					<h:outputText value="ID" ></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>

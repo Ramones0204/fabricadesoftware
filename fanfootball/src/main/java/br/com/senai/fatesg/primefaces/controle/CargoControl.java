@@ -7,6 +7,8 @@ import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+
+import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.senai.fatesg.primefaces.entidade.Cargo;
 import br.com.senai.fatesg.primefaces.persistencia.CargoDao;
 
@@ -27,18 +29,29 @@ public class CargoControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		if(cargo.getId() == 0) {
+		if(cargo.getNomeCargo().isEmpty() || cargo.getSalario() == null) {
+			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
+		}
+		else if (cargo.getId() == 0) {
 			try {
 				cargoDao.incluir(cargo);
 				listar(evt);
 				cargo = new Cargo();
+				UtilFaces.addMensagemFaces("Cargo Salvo com sucesso");
 			} catch (Exception e) {
 				// TODO: handle exception
+				UtilFaces.addMensagemFaces("Erro ao inserir o cargo");
 			}
 		} else {
-			cargoDao.alterar(cargo);
-			listar(evt);
-			cargo = new Cargo();
+			try {
+				cargoDao.alterar(cargo);
+				UtilFaces.addMensagemFaces("Cargo Alterado com sucesso");
+				listar(evt);
+				cargo = new Cargo();
+			} catch (Exception e) {
+				// TODO: handle exception
+				UtilFaces.addMensagemFaces("Erro ao Deletar o Cargo " + cargo.getId());
+			}
 		}
 		
 	}
@@ -47,7 +60,7 @@ public class CargoControl {
 		try {
 			cargos = cargoDao.listar();
 		} catch (Exception e) {
-			e.getMessage();
+			UtilFaces.addMensagemFaces("Erro ao listar os cargos");
 		}
 	}
 	
@@ -60,8 +73,17 @@ public class CargoControl {
 	}
 	
 	public void excluir(Cargo cargo) {
-		cargoDao.excluirPorId(cargo.getId());
-		cargos = cargoDao.listar();
+		try {
+			cargoDao.excluirPorId(cargo.getId());
+			UtilFaces.addMensagemFaces("Cargo " + cargo.getNomeCargo() + "Deletado");
+			cargos = cargoDao.listar();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			UtilFaces.addMensagemFaces("Erro ao deletar o cargo " + cargo.getNomeCargo());
+
+		}
+		
 	}
 	
 	public Cargo getCargo() {

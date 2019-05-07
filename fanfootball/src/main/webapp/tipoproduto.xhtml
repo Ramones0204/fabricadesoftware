@@ -11,7 +11,7 @@
 		<p:panel header="Tipo Produto" id="panel">
 			<h:panelGrid columns="2">
 				<h:outputText value="Id"></h:outputText>
-				<p:inputText value="#{TipoProdutoControl.tipoProduto.id}"></p:inputText>
+				<p:inputText disabled="true" value="#{TipoProdutoControl.tipoProduto.id}"></p:inputText>
 				<h:outputText value="Descrição"></h:outputText>
 				<p:inputText value="#{TipoProdutoControl.tipoProduto.descricao}"></p:inputText>
 				<p:commandButton actionListener="#{TipoProdutoControl.confirmar }"

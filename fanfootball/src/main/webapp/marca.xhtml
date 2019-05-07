@@ -11,7 +11,7 @@
 		<p:panel header="Marca" id="panel">
 			<h:panelGrid columns="2">
 				<h:outputText value="Id"></h:outputText>
-				<p:inputText value="#{MarcaControl.marca.id}"></p:inputText>
+				<p:inputText disabled="true" value="#{MarcaControl.marca.id}"></p:inputText>
 				<h:outputText value="Descrição"></h:outputText>
 				<p:inputText value="#{MarcaControl.marca.nomeMarca}"></p:inputText>
 				<p:commandButton actionListener="#{MarcaControl.confirmar }"

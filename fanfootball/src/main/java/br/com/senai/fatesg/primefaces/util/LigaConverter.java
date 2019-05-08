@@ -10,7 +10,7 @@ import br.com.senai.fatesg.primefaces.persistencia.LigaDaoJpa;
 
 
 
-@FacesConverter("LigaConverter")
+@FacesConverter("generic")
 public class LigaConverter implements Converter{
 	
 	@Override

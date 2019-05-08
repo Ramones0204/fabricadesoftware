@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
-
+import br.com.senai.fatesg.primefaces.entidade.Liga;
 import br.com.senai.fatesg.primefaces.entidade.Time;
+import br.com.senai.fatesg.primefaces.persistencia.LigaDao;
 import br.com.senai.fatesg.primefaces.persistencia.TimeDao;
 
 
@@ -23,18 +24,23 @@ public class TimeControl {
 	private Time time = new Time();
 	@Autowired
 	private TimeDao timeDao;
-
+	@Autowired
+	private LigaDao ligaDao;
 	private List<Time> times = new ArrayList<Time>();
+	private List<Liga> ligas = new ArrayList<Liga>();
+	private Liga liga = new Liga();
 
 	@PostConstruct
 	public void init() {
 		listar(null);
+		listarLiga();
 	}
 
 	public void confirmar(ActionEvent evt) {
 		
 		if(time.getId() == 0) {
 			try {
+				time.setLiga(liga);
 				timeDao.incluir(time);
 				listar(evt);
 				time = new Time();
@@ -52,6 +58,14 @@ public class TimeControl {
 	public void listar(ActionEvent evt) {
 		try {
 			times = timeDao.listar(); 
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	public void listarLiga() {
+		try {
+			ligas = ligaDao.listar(); 
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -85,6 +99,27 @@ public class TimeControl {
 	public List<Time> getTimes() {
 		return times;
 	}
+
+	public List<Liga> getLigas() {
+		return ligas;
+	}
+
+	public void setLigas(List<Liga> ligas) {
+		this.ligas = ligas;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
+	}
+
+	public Liga getLiga() {
+		return liga;
+	}
+
+	public void setLiga(Liga liga) {
+		this.liga = liga;
+	}
+	
 	
 	
 }

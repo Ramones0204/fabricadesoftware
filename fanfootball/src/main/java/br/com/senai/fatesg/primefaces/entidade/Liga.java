@@ -2,14 +2,15 @@ package br.com.senai.fatesg.primefaces.entidade;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
 
 @Entity
 public class Liga {
@@ -19,8 +20,7 @@ public class Liga {
 	@Column(name = "id_liga")
 	private int id;
 	private String nomeLiga;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="liga")
-	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="liga")
 	private List<Time> times;
 
 	public int getId() {
@@ -39,6 +39,14 @@ public class Liga {
 		this.nomeLiga = nomeLiga;
 	}
 	
+	public List<Time> getTimes() {
+		return times;
+	}
+
+	public void setTimes(List<Time> times) {
+		this.times = times;
+	}
+
 	@Override
 	public String toString() {
 		return getId() + " - " + getNomeLiga();

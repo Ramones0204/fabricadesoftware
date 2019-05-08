@@ -1,5 +1,10 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
+
+
+
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,22 +14,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Time {
+public class Time  {
 	
 	@Id
 	@GeneratedValue(generator = "time_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "time_seq", sequenceName = "time_seq", allocationSize = 1, initialValue = 1)
+	@Column(name = "id_time")
 	private int id;
 	private String nomeTime;
 	private String tipoTime;
 	private String pais;
 	private String regiao;
 	private String estado;
-	
 	@ManyToOne
-	@JoinColumn(name = "id_liga")
-	
 	private Liga liga;
+	@JoinColumn(name = "id_liga")
 	
 	public int getId() {
 		return id;

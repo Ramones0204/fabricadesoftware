@@ -122,11 +122,12 @@
 
 				<h:outputText value="Ligas"></h:outputText>
 				<h:selectOneMenu id="listaLigas"
-					value="#{LigaControl.liga}" >
-					<f:selectItem itemLabel="--Nenhum--" itemValue="" />
-					<f:selectItems value="#{LigaControl.ligas}" var="liga"
-						itemLabel="#{liga.nomeLiga}" itemValue="#{liga.id}" />
+					value="#{TimeControl.liga}"  >
+					<f:selectItem itemLabel="--Selecione--" itemValue="" />
+					<f:selectItems value="#{TimeControl.ligas}" var="v"
+						itemLabel="#{v.nomeLiga}" itemValue="#{v}" />
 				</h:selectOneMenu>
+
 
 				<p:commandButton actionListener="#{TimeControl.confirmar }"
 					value="Confirmar" update="times, panel"></p:commandButton>
@@ -144,7 +145,7 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.nomeTime}">
+			<p:column sortBy="#{cont.nomeTime}" width="15%">
 				<f:facet name="header">
 					<h:outputText value="Nome Time"></h:outputText>
 				</f:facet>
@@ -167,6 +168,12 @@
 					<h:outputText value="Estado"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.estado}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.pais}" width="10%">
+				<f:facet name="header">
+					<h:outputText value="Pais"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.pais}"></h:outputText>
 			</p:column>
 			<p:column width="5%">
 				<p:commandButton icon="ui-icon-trash"

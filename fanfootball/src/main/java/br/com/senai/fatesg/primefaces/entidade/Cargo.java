@@ -4,6 +4,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -11,7 +12,7 @@ public class Cargo {
 	@Id
 	@GeneratedValue(generator = "cargo_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "cargo_seq", sequenceName = "contato_seq", allocationSize = 1, initialValue = 1)
-
+	@Column(name = "cargo")
 	private int id;
 	private String nomeCargo;
 	private Double salario;

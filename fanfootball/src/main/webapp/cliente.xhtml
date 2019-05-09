@@ -9,20 +9,24 @@
 	<h3> fdgf</h3>
 	<ui:define name="corpo">
 			
-		
+		<p:panel header="Formulário" id="panel">
 			<h:panelGrid columns="2">
 				<h:outputText value="ID" ></h:outputText>
 				<p:inputText  disabled="true" value="#{ClienteControl.cliente.id}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{ClienteControl.cliente.nome}"></p:inputText>
+				<h:outputText value="Nome Social"></h:outputText>
+				<p:inputText value="#{ClienteControl.cliente.nomeSocial}"></p:inputText>
 				<h:outputText value="Cpf "></h:outputText>
 				<p:inputMask value="#{ClienteControl.cliente.cpf }"
 					mask="999.999.999-99" ></p:inputMask>
+				<h:outputText value="Data de Nascimento"></h:outputText>
+				<p:inputMask value="#{ClienteControl.cliente.dataNascimento}" mask="99/99/9999"></p:inputMask>
 				<p:commandButton actionListener="#{ClienteControl.confirmar }"
 					value="Salvar" ></p:commandButton>
 			</h:panelGrid>
 		
-
+		</p:panel>
 
 		
 

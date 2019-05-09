@@ -10,6 +10,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Liga;
 import br.com.senai.fatesg.primefaces.entidade.Time;
@@ -37,7 +38,9 @@ public class TimeControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		
+		if(time.getNomeTime().isEmpty()) {
+			UtilFaces.addMensagemFaces("Favor informar o nome do time");
+		}
 		if(time.getId() == 0) {
 			try {
 				time.setLiga(liga);
@@ -67,7 +70,7 @@ public class TimeControl {
 	
 	public void listarLiga() {
 		try {
-			
+			ligas = ligaDao.listar();
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -80,7 +83,7 @@ public class TimeControl {
 	}
 
 	public void selecionarTimes(Time time) {
-		time.getLiga().getNomeLiga();
+		
 		try {
 			this.time = timeDao.consultar(time.getId());
 

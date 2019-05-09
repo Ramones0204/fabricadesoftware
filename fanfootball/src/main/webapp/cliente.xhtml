@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<h3> fdgf</h3>
+	<ui:define name="corpo">
+			
+		
+			<h:panelGrid columns="2">
+				<h:outputText value="ID" ></h:outputText>
+				<p:inputText  disabled="true" value="#{ClienteControl.cliente.id}"></p:inputText>
+				<h:outputText value="Nome"></h:outputText>
+				<p:inputText value="#{ClienteControl.cliente.nome}"></p:inputText>
+				<h:outputText value="Cpf "></h:outputText>
+				<p:inputMask value="#{ClienteControl.cliente.cpf }"
+					mask="999.999.999-99" ></p:inputMask>
+				<p:commandButton actionListener="#{ClienteControl.confirmar }"
+					value="Salvar" ></p:commandButton>
+			</h:panelGrid>
+		
+
+
+		
+
+	</ui:define>
+</ui:composition>

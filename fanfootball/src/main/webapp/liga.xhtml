@@ -8,14 +8,15 @@
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
 
-		<p:panel header="Gestão de Ligas" id="panel">
+		<p:panel header="Gestão de Ligas" id="panel" >
 			<h:panelGrid columns="2">
 				<h:outputText value="ID" ></h:outputText>
 				<p:inputText  disabled="true" value="#{LigaControl.liga.id}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
-				<p:commandButton actionListener="#{LigaControl.confirmar }"
-					value="Salvar" update="ligas, panel"></p:commandButton>
+				<p:commandButton  styleClass="btn btn-success" actionListener="#{LigaControl.confirmar }"
+					value="Salvar" update="ligas, panel" ></p:commandButton>
+				
 			</h:panelGrid>
 
 
@@ -48,6 +49,7 @@
 					style="width: 20px; height:20px;"
 					actionListener="#{LigaControl.excluir(cont)}" update="ligas">
 				</p:commandButton>
+				
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
 					actionListener="#{LigaControl.selecionarLigaParaEdicao(cont)}"

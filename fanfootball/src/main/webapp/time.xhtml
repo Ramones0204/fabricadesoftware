@@ -121,12 +121,12 @@
 				</p:selectOneMenu>
 
 				<h:outputText value="Ligas"></h:outputText>
-				<h:selectOneMenu id="listaLigas"
-					value="#{TimeControl.liga}"  >
-					<f:selectItem itemLabel="--Selecione--" itemValue="" />
-					<f:selectItems value="#{TimeControl.ligas}" var="v"
-						itemLabel="#{v.nomeLiga}" itemValue="#{v}" />
-				</h:selectOneMenu>
+				<p:selectOneMenu id="listaLigas"
+					value="#{TimeControl.liga}"  converter="objectConverter" ajax="false" required="true" >
+					<f:selectItem itemLabel="" itemValue="" />
+					<f:selectItems value="#{TimeControl.ligas}" var="liga"
+						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}" />
+				</p:selectOneMenu>
 
 
 				<p:commandButton actionListener="#{TimeControl.confirmar }"

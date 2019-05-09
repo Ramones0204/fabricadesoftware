@@ -94,4 +94,8 @@
     <extension>jspx</extension>
     <mime-type>application/xml</mime-type>
   </mime-mapping>
+  <context-param>
+  <param-name>primefaces.THEME</param-name>
+  <param-value>bootstrap</param-value>
+</context-param>
 </web-app>

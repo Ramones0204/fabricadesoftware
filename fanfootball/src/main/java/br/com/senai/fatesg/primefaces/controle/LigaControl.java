@@ -31,7 +31,7 @@ public class LigaControl {
 		if(liga.getNomeLiga().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor informar o nome da Liga");
 		}
-		else if(liga.getId() == 0) {
+		else if(liga.getId() == null) {
 			try {
 				ligaDao.incluir(liga);
 				listar(evt);

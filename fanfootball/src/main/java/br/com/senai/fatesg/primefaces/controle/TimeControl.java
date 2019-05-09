@@ -48,6 +48,7 @@ public class TimeControl {
 				// TODO: handle exception
 			}
 		} else {
+			time.setLiga(liga);
 			timeDao.alterar(time);
 			listar(evt);
 			time = new Time();
@@ -57,6 +58,7 @@ public class TimeControl {
 
 	public void listar(ActionEvent evt) {
 		try {
+			
 			times = timeDao.listar(); 
 		} catch (Exception e) {
 			e.getMessage();
@@ -65,7 +67,7 @@ public class TimeControl {
 	
 	public void listarLiga() {
 		try {
-			ligas = ligaDao.listar(); 
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -78,9 +80,10 @@ public class TimeControl {
 	}
 
 	public void selecionarTimes(Time time) {
-
+		time.getLiga().getNomeLiga();
 		try {
 			this.time = timeDao.consultar(time.getId());
+
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

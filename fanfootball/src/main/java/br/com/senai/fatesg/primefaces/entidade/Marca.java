@@ -1,6 +1,5 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,6 @@ public class Marca {
 	@Id
 	@GeneratedValue(generator = "marca_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "marca_seq", sequenceName = "contato_seq", allocationSize = 1, initialValue = 1)
-	@Column(name = "id_marca")
 	private int id;
 	
 	private String nomeMarca;

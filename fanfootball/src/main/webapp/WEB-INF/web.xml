@@ -95,7 +95,7 @@
     <mime-type>application/xml</mime-type>
   </mime-mapping>
   <context-param>
-  <param-name>primefaces.THEME</param-name>
-  <param-value>bootstrap</param-value>
+    <param-name>primefaces.THEME</param-name>
+    <param-value>swanky-purse</param-value>
 </context-param>
 </web-app>

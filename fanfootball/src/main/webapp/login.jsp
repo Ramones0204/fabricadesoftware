@@ -4,6 +4,7 @@
 <head>
 <title>Login</title>
 
+
 <link rel="stylesheet" href="css/style.css">
 	<link href="css/bootstrap.css" rel="stylesheet" />
 	<link href="css/bootstrap-responsive.css" rel="stylesheet" />
@@ -21,10 +22,10 @@
 	</script>
 </head>
 <body>
-	<form action="j_spring_security_check" method="post">
-		<div class="wrapper">
+	<form action="j_spring_security_check" method="post" style="width: 0%;>
+		<div class="wrapper"  >
 
-			<div class="span4 sidebar">
+			<div class="span4 sidebar" >
 
 				<div class="well quickSignupForm">
 					<h3>Acesso ao Sistema</h3>

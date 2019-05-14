@@ -1,6 +1,13 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
-public class Contato {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Contato implements Serializable {
+    
 	private String email;
 	private String telefoneFixo;
 	private String telefoneCelular;

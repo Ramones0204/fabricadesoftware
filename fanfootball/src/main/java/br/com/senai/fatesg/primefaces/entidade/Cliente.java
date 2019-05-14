@@ -1,8 +1,9 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Cliente  {
+public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(generator = "cliente_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1, initialValue = 1)
@@ -24,49 +25,71 @@ public class Cliente  {
 	private Date dataNascimento;
 	private String genero;
 	private String senha;
+	@Embedded
+	private Contato contato;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getNomeSocial() {
 		return nomeSocial;
 	}
+
 	public void setNomeSocial(String nomeSocial) {
 		this.nomeSocial = nomeSocial;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
+
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
+
 	public String getGenero() {
 		return genero;
 	}
+
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
-	
+
+	public Contato getContato() {
+		return contato;
+	}
+
+	public void setContato(Contato contato) {
+		this.contato = contato;
+	}
+
 }

@@ -41,7 +41,6 @@ public class MarcaControl {
 				marca = new Marca();
 				UtilFaces.addMensagemFaces("Marca salva com Sucesso ");
 			} catch (Exception e) {
-				// TODO: handle exception
 				UtilFaces.addMensagemFaces("Erro ao Incluir a Marca");
 			}
 		} else {

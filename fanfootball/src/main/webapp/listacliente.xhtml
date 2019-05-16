@@ -9,28 +9,11 @@
 	<ui:define name="corpo">
 	
 	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
-
-		<p:panel header="Gestão de Ligas" id="panel" >
-			<h:panelGrid columns="2">
-				<h:outputText value="ID" ></h:outputText>
-				<p:inputText  disabled="true" value="#{LigaControl.liga.id}"></p:inputText>
-				<h:outputText value="Nome"></h:outputText>
-				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
-				<p:commandButton   actionListener="#{LigaControl.confirmar }"
-					value="Salvar" update="ligas, panel" ></p:commandButton>
-				
-			</h:panelGrid>
-
-
-
-
-		</p:panel>
-
-
-		<p:dataTable id="ligas" value="#{LigaControl.ligas }" var="cont"
+	
+		<p:dataTable id="clientes" value="#{ClienteControl.clientes}" var="cont"
 			width="100%" emptyMessage="Sem registros">
 			<f:facet name="header">
-				<h:outputText value="Lista de Ligas"></h:outputText>
+				<h:outputText value="Lista de Clientes"></h:outputText>
 			</f:facet>
 			<p:column sortBy="#{cont.id}" width="15%">
 				<f:facet name="header">
@@ -38,26 +21,38 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.nomeLiga}">
+			<p:column sortBy="#{cont.nome}" >
 				<f:facet name="header">
-					<h:outputText value="Nome Liga"></h:outputText>
+					<h:outputText value="Nome Cliente"></h:outputText>
 				</f:facet>
-				<h:outputText value="#{cont.nomeLiga}"></h:outputText>
+				<h:outputText value="#{cont.nome}"></h:outputText>
 			</p:column>
-
+			<p:column sortBy="#{cont.cpf}" >
+				<f:facet name="header">
+					<h:outputText value="Cpf Cliente"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.cpf}"></h:outputText>
+			</p:column>
+				<p:column sortBy="#{cont.email}" >
+				<f:facet name="header">
+					<h:outputText value="Email Cliente"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.contato.email}"></h:outputText>
+			</p:column>
+			
 			<p:column width="5%">
 
 				<p:commandButton icon="ui-icon-trash"
 					style="width: 20px; height:20px;"
-					actionListener="#{LigaControl.excluir(cont)}" update="ligas">
+					actionListener="#{ClienteControl.excluir(cont)}" update="clientes">
 				</p:commandButton>
-				
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
-					actionListener="#{LigaControl.selecionarLigaParaEdicao(cont)}"
-					onclick="PF('dialogNovoContato').show();">
+					actionListener="#{ClienteControl.selecionarClienteParaEdicao(cont)}"
+					action="cliente.xhtml">
 				</p:commandButton>
 			</p:column>
+
 			
 		</p:dataTable>
 

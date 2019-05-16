@@ -38,7 +38,6 @@ public class LigaControl {
 				liga = new Liga();
 				UtilFaces.addMensagemFaces("Liga Salva com Sucesso");
 			} catch (Exception e) {
-				// TODO: handle exception
 				UtilFaces.addMensagemFaces("Erro ao incluir a Liga");
 			}
 		} else {

@@ -48,7 +48,6 @@ public class TimeControl {
 				listar(evt);
 				time = new Time();
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 		} else {
 			time.setLiga(liga);

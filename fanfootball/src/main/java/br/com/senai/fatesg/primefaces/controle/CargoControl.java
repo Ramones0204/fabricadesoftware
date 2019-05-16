@@ -28,20 +28,15 @@ public class CargoControl {
 		listar(null);
 	}
 
-	public void confirmar(ActionEvent evt) {
+	public void confirmar(ActionEvent evt) throws Exception {
 		if(cargo.getNomeCargo().isEmpty() || cargo.getSalario() == null) {
 			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
 		}
 		else if (cargo.getId() == 0) {
-			try {
-				cargoDao.incluir(cargo);
-				listar(evt);
-				cargo = new Cargo();
-				UtilFaces.addMensagemFaces("Cargo Salvo com sucesso");
-			} catch (Exception e) {
-				// TODO: handle exception
-				UtilFaces.addMensagemFaces("Erro ao inserir o cargo");
-			}
+			cargoDao.incluir(cargo);
+			listar(evt);
+			cargo = new Cargo();
+			UtilFaces.addMensagemFaces("Cargo Salvo com sucesso");
 		} else {
 			try {
 				cargoDao.alterar(cargo);
@@ -68,7 +63,6 @@ public class CargoControl {
 		try {
 			this.cargo = cargoDao.consultar(cargo.getId());
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 	}
 	
@@ -79,7 +73,6 @@ public class CargoControl {
 			cargos = cargoDao.listar();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			UtilFaces.addMensagemFaces("Erro ao deletar o cargo " + cargo.getNomeCargo());
 
 		}

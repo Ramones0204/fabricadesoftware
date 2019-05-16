@@ -72,7 +72,6 @@ public class TipoProdutoControl {
 			UtilFaces.addMensagemFaces("Tipo de Produto " + tipoProduto.getDescricao() + "Excluido com Sucesso");
 			tiposProdutos = tipoProdutoDao.listar();
 		} catch (Exception e) {
-			// TODO: handle exception
 			UtilFaces.addMensagemFaces("Erro ao Excluir o Tipo de Produto");
 
 		}

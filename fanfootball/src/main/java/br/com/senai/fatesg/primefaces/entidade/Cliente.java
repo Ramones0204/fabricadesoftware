@@ -2,7 +2,6 @@ package br.com.senai.fatesg.primefaces.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,8 +20,7 @@ public class Cliente implements Serializable {
 	private String nome;
 	private String nomeSocial;
 	private String cpf;
-	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	private String dataNascimento;
 	private String genero;
 	private String senha;
 	@Embedded
@@ -60,11 +58,11 @@ public class Cliente implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 

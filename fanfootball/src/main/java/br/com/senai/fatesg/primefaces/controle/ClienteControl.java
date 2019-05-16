@@ -9,8 +9,10 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
+import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Cliente;
 import br.com.senai.fatesg.primefaces.entidade.Contato;
+import br.com.senai.fatesg.primefaces.entidade.Liga;
 import br.com.senai.fatesg.primefaces.persistencia.ClienteDao;
 import br.com.senai.fatesg.primefaces.util.ValidaCPF;
 
@@ -57,17 +59,45 @@ public class ClienteControl {
 				listar(evt);
 				cliente = new Cliente();
 			} catch (Exception e) {
-				// TODO: handle exception
 				UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
 			}
 		}
 	}
 	public void listar(ActionEvent evt) {
 		try {
+			
 			clientes = clienteDao.listar();
 		} catch (Exception e) {
 			UtilFaces.addMensagemFaces("Erro ao listar os clientes");
 		}
+	}
+	
+	public void excluir(Cliente cliente) {
+		try {
+			clienteDao.excluirPorId(cliente.getId());
+			UtilFaces.addMensagemFaces("Cliente " + cliente.getNome() + "Excluido com sucesso");
+			clientes = clienteDao.listar();
+		} catch (Exception e) {
+			
+		}
+		
+
+	}
+
+	public void selecionarClienteParaEdicao(Cliente cliente) {
+		try {
+			this.cliente = clienteDao.consultar(cliente.getId());
+		} catch (Exception e) {
+			// TODO: handle exception
+			UtilFaces.addMensagemFaces("Erro ao Consultar CLiente"	);
+		}
+	
+
+	}
+	
+	public void limparCampos() {
+		this.cliente.setNome("");
+		this.cliente.setId(0);
 	}
 
 	public Cliente getCliente() {

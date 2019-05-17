@@ -32,7 +32,7 @@ public class CargoControl {
 		if(cargo.getNomeCargo().isEmpty() || cargo.getSalario() == null) {
 			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
 		}
-		else if (cargo.getId() == 0) {
+		else if (cargo.getId()== null) {
 			cargoDao.incluir(cargo);
 			listar(evt);
 			cargo = new Cargo();

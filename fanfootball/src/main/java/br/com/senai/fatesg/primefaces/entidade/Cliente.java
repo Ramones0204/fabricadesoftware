@@ -1,15 +1,12 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Cliente implements Serializable {

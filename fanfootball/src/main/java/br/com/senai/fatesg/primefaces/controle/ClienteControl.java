@@ -2,30 +2,27 @@ package br.com.senai.fatesg.primefaces.controle;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
-import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Cliente;
 import br.com.senai.fatesg.primefaces.entidade.Contato;
-import br.com.senai.fatesg.primefaces.entidade.Liga;
 import br.com.senai.fatesg.primefaces.persistencia.ClienteDao;
 import br.com.senai.fatesg.primefaces.util.ValidaCPF;
 
 @Named("ClienteControl")
 @Scope("conversation")
 public class ClienteControl {
+	
 	private Cliente cliente = new Cliente();
 	private Contato contato = new Contato();
 	@Autowired
 	private ClienteDao clienteDao;
 	private List<Cliente> clientes = new ArrayList<Cliente>();
 	ValidaCPF cpf = new ValidaCPF();
-
 	@PostConstruct
 	public void init() {
 		listar(null);
@@ -95,11 +92,7 @@ public class ClienteControl {
 
 	}
 	
-	public void limparCampos() {
-		this.cliente.setNome("");
-		this.cliente.setId(0);
-	}
-
+	
 	public Cliente getCliente() {
 		return cliente;
 	}

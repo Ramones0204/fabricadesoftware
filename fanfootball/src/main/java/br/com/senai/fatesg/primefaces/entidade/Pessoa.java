@@ -17,8 +17,8 @@ public class Pessoa {
 	@Id
 	private int id_pessoa;
 	private String nome;
-	 @Column(insertable=false, updatable=false)
-	 private String tipo;
+	@Column(insertable = false, updatable = false)
+	private String tipo;
 
 	public String getNome() {
 		return nome;
@@ -43,35 +43,16 @@ public class Pessoa {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
-	/*private String cpf;
-	private Date dataNascimento;
-	private Contato contato;
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-	public Contato getContato() {
-		return contato;
-	}
-	public void setContato(Contato contato) {
-		this.contato = contato;
-	}*/
-	
-	
+
+	/*
+	 * private String cpf; private Date dataNascimento; private Contato contato;
+	 * public String getNome() { return nome; } public void setNome(String nome) {
+	 * this.nome = nome; } public String getCpf() { return cpf; } public void
+	 * setCpf(String cpf) { this.cpf = cpf; } public Date getDataNascimento() {
+	 * return dataNascimento; } public void setDataNascimento(Date dataNascimento) {
+	 * this.dataNascimento = dataNascimento; } public Contato getContato() { return
+	 * contato; } public void setContato(Contato contato) { this.contato = contato;
+	 * }
+	 */
+
 }

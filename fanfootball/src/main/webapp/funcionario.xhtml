@@ -8,64 +8,44 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="corpo">
-<<<<<<< HEAD
-
-
-
-=======
-
->>>>>>> branch 'master' of https://github.com/Ramones0204/fabricadesoftware.git
 		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
-
-<<<<<<< HEAD
-
-
-
-		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
-
-
-
-=======
-
-
-	
 	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
 			
-
-
->>>>>>> branch 'master' of https://github.com/Ramones0204/fabricadesoftware.git
 		<p:panel header="Formulário" id="panel">
 
 			<h:panelGrid columns="2">
 				<h:outputText value="ID"></h:outputText>
-				<p:inputText disabled="true" value="#{ClienteControl.cliente.id}"></p:inputText>
+				<p:inputText disabled="true" value="#{FuncionarioControl.funcionario.matricula}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
-				<p:inputText value="#{ClienteControl.cliente.nome}"></p:inputText>
-				<h:outputText value="Nome Social"></h:outputText>
-				<p:inputText value="#{ClienteControl.cliente.nomeSocial}"></p:inputText>
+				<p:inputText value="#{FuncionarioControl.funcionario.nome}"></p:inputText>
 				<h:outputText value="Cpf "></h:outputText>
-				<p:inputMask value="#{ClienteControl.cliente.cpf }"
+				<p:inputMask value="#{FuncionarioControl.funcionario.cpf }"
 					mask="999.999.999-99"></p:inputMask>
 				<h:outputText value="Data de Nascimento"></h:outputText>
-				<p:inputMask value="#{ClienteControl.cliente.dataNascimento}"
+				<p:inputMask value="#{FuncionarioControl.funcionario.dataNascimento}"
 					mask="99/99/9999"></p:inputMask>
-				<h:outputText value="Gênero"></h:outputText>
-				<p:inputText value="#{ClienteControl.cliente.genero}"></p:inputText>
 				<h:outputText value="Email"></h:outputText>
-				<p:inputText value="#{ClienteControl.contato.email}"></p:inputText>
+				<p:inputText value="#{FuncionarioControl.contato.email}"></p:inputText>
 				<h:outputText value="Telefone Celular"></h:outputText>
-				<p:inputMask value="#{ClienteControl.contato.telefoneCelular}"
+				<p:inputMask value="#{FuncionarioControl.contato.telefoneCelular}"
 					mask="(99)-99999-9999"></p:inputMask>
 				<h:outputText value="Telefone Fixo"></h:outputText>
-				<p:inputMask value="#{ClienteControl.contato.telefoneFixo}"
+				<p:inputMask value="#{FuncionarioControl.contato.telefoneFixo}"
 					mask="(99)-9999-9999"></p:inputMask>
 				<h:outputText value="Senha " />
-				<p:password id="feedback" value="#{ClienteControl.cliente.senha}"
+				<p:password id="feedback" value="#{FuncionarioControl.funcionario.senha}"
 					feedback="true" />
-				<p:commandButton actionListener="#{ClienteControl.confirmar }"
+				<h:outputText value="Cargos"></h:outputText>
+				<p:selectOneMenu id="listaCargo"
+					value="#{FuncionarioControl.cargo}"  converter="objectConverter" ajax="false" required="true" >
+					<f:selectItem itemLabel="" itemValue="" />
+					<f:selectItems value="#{FuncionarioControl.cargos}" var="cargo"
+						itemLabel="#{cargo.nomeCargo}" itemValue="#{cargo}" />
+				</p:selectOneMenu>
+				<p:commandButton actionListener="#{FuncionarioControl.confirmar }"
 					value="Salvar">
 				</p:commandButton>
-				<p:commandButton action="listacliente.xhtml" value="Listar">
+				<p:commandButton action="listafuncionario.xhtml" value="Listar">
 				</p:commandButton>
 			</h:panelGrid>
 

@@ -26,10 +26,11 @@ public class ClienteControl {
 	@PostConstruct
 	public void init() {
 		listar(null);
+		cliente.setContato(contato);
 	}
 
 	public void confirmar(ActionEvent evt) {
-		cliente.setContato(contato);
+		
 		cpf.isCPF(cliente.getCpf());
 		if(cliente.getNome().isEmpty() & cliente.getNomeSocial().isEmpty())  {
 			UtilFaces.addMensagemFaces("O Campo Nome e Nome Social devem ser informados");
@@ -44,7 +45,7 @@ public class ClienteControl {
 			try {
 				clienteDao.incluir(cliente);
 				listar(evt);
-				cliente = new Cliente();
+				//cliente = new Cliente();
 				UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
 			} catch (Exception e) {
 				UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
@@ -54,7 +55,7 @@ public class ClienteControl {
 				clienteDao.alterar(cliente);
 				UtilFaces.addMensagemFaces("Cliente" + cliente.getNome() + " Alterado com sucesso");
 				listar(evt);
-				cliente = new Cliente();
+			//	cliente = new Cliente();
 			} catch (Exception e) {
 				UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
 			}
@@ -92,7 +93,19 @@ public class ClienteControl {
 
 	}
 	
-	
+	public String limpar() {
+		cliente.setId(0);
+		cliente.setNome("");
+		cliente.setNomeSocial("");
+		cliente.setGenero("");
+		cliente.setCpf("");
+		cliente.setDataNascimento("");
+		cliente.setSenha("");
+		cliente.getContato().setEmail("");
+		cliente.getContato().setTelefoneCelular("");
+		cliente.getContato().setTelefoneFixo("");
+		return "";
+	}
 	public Cliente getCliente() {
 		return cliente;
 	}

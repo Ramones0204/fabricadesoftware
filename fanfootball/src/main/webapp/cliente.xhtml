@@ -8,28 +8,11 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="corpo">
-
-
-
-
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
-
-
-
-
 		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
-
-
-
-
-
-
-		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
-
-
-
 
 		<p:panel header="Formulário" id="panel">
 
@@ -49,12 +32,12 @@
 				<h:outputText value="Gênero"></h:outputText>
 				<p:inputText value="#{ClienteControl.cliente.genero}"></p:inputText>
 				<h:outputText value="Email"></h:outputText>
-				<p:inputText value="#{ClienteControl.contato.email}"></p:inputText>
+				<p:inputText value="#{ClienteControl.cliente.contato.email}"></p:inputText>
 				<h:outputText value="Telefone Celular"></h:outputText>
-				<p:inputMask value="#{ClienteControl.contato.telefoneCelular}"
+				<p:inputMask value="#{ClienteControl.cliente.contato.telefoneCelular}"
 					mask="(99)-99999-9999"></p:inputMask>
 				<h:outputText value="Telefone Fixo"></h:outputText>
-				<p:inputMask value="#{ClienteControl.contato.telefoneFixo}"
+				<p:inputMask value="#{ClienteControl.cliente.contato.telefoneFixo}"
 					mask="(99)-9999-9999"></p:inputMask>
 				<h:outputText value="Senha " />
 				<p:password id="feedback" value="#{ClienteControl.cliente.senha}"
@@ -64,6 +47,8 @@
 				</p:commandButton>
 				<p:commandButton action="listacliente.xhtml" value="Listar">
 				</p:commandButton>
+				<h:commandButton action="#{ClienteControl.limpar}" value="Limpar">
+				</h:commandButton>
 			</h:panelGrid>
 
 		</p:panel>

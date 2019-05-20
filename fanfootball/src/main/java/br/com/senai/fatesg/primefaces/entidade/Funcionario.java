@@ -12,6 +12,7 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Funcionario implements Serializable {
+
 	@Id
 	@GeneratedValue(generator = "fun_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "fun_seq", sequenceName = "fun_seq", allocationSize = 1, initialValue = 1)

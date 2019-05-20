@@ -30,11 +30,12 @@ public class FuncionarioControl {
 	public void init() {
 		listar(null);
 		listarCargos();
+		this.funcionario.setContato(contato);
 	}
 	
 	public void confirmar(ActionEvent evt) {
 		funcionario.setCargo(cargo);
-		funcionario.setContato(contato);
+	
 		if(funcionario.getNome().isEmpty())  {
 			UtilFaces.addMensagemFaces("O Campo Nome devem ser informados");
 		}
@@ -48,7 +49,7 @@ public class FuncionarioControl {
 			try {
 				funcionarioDao.incluir(funcionario);
 				listar(evt);
-				funcionario = new Funcionario();
+				//funcionario = new Funcionario();
 				UtilFaces.addMensagemFaces("funcionario Salvo com sucesso");
 			} catch (Exception e) {
 				UtilFaces.addMensagemFaces("Erro ao inserir o funcionario");
@@ -58,7 +59,7 @@ public class FuncionarioControl {
 				funcionarioDao.alterar(funcionario);
 				UtilFaces.addMensagemFaces("funcionario" + funcionario.getNome() + " Alterado com sucesso");
 				listar(evt);
-				funcionario = new Funcionario();
+				//funcionario = new Funcionario();
 			} catch (Exception e) {
 				UtilFaces.addMensagemFaces("Erro ao Deletar o funcionario " + funcionario.getMatricula());
 			}
@@ -95,13 +96,28 @@ public class FuncionarioControl {
 	public void selecionarFuncinarioParaEdicao(Funcionario funcionario) {
 		try {
 			this.funcionario = funcionarioDao.consultar(funcionario.getMatricula());
+			System.out.println(this.funcionario.getContato().getEmail());
+			System.out.println(this.funcionario.getContato().getTelefoneCelular());
+			System.out.println(this.funcionario.getContato().getTelefoneFixo());
+		
 		} catch (Exception e) {
 			// TODO: handle exception
 			UtilFaces.addMensagemFaces("Erro ao Consultar CLiente"	);
 		}
 	
 	}
-
+	
+	public String limpar() {
+		funcionario.setMatricula(0);
+		funcionario.setNome("");
+		funcionario.setCpf("");
+		funcionario.setDataNascimento("");
+		funcionario.setSenha("");
+		funcionario.getContato().setEmail("");
+		funcionario.getContato().setTelefoneCelular("");
+		funcionario.getContato().setTelefoneFixo("");
+		return "";
+	}
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}

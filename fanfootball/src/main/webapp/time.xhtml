@@ -12,6 +12,7 @@
 
 		<p:panel header="Times" id="panel">
 			<h:panelGrid columns="2">
+				
 				<h:outputText value="Id"></h:outputText>
 				<p:inputText disabled="true" value="#{TimeControl.time.id}"></p:inputText>
 				<h:outputText value="Nome Time"></h:outputText>
@@ -121,18 +122,16 @@
 					<f:selectItem itemLabel="Uruguai" itemValue="Uruguai" />
 					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
 				</p:selectOneMenu>
-
 				<h:outputText value="Ligas"></h:outputText>
-				<p:selectOneMenu id="listaLigas"
+				<p:selectOneMenu id="listaLigas" autoUpdate = "true"
 					value="#{TimeControl.liga}"  converter="objectConverter" ajax="false" required="true" >
-					<f:selectItem itemLabel="" itemValue="" />
-					<f:selectItems value="#{TimeControl.ligas}" var="liga"
-						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}" />
+					
+					<f:selectItems value="#{LigaControl.ligas}" var="liga"
+						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}"  />
 				</p:selectOneMenu>
-
-
 				<p:commandButton actionListener="#{TimeControl.confirmar }"
 					value="Confirmar" update="times, panel"></p:commandButton>
+				
 			</h:panelGrid>
 		</p:panel>
 
@@ -177,6 +176,12 @@
 				</f:facet>
 				<h:outputText value="#{cont.pais}"></h:outputText>
 			</p:column>
+			<p:column sortBy="#{cont.liga.nomeLiga}" width="10%">
+				<f:facet name="header">
+					<h:outputText value="Liga"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.liga.nomeLiga}"></h:outputText>
+			</p:column>
 			<p:column width="5%">
 				<p:commandButton icon="ui-icon-trash"
 					style="width: 20px; height:20px;"
@@ -184,7 +189,7 @@
 				</p:commandButton>
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
-					actionListener="#{TimeControl.selecionarTimes(cont)}"
+					actionListener="#{TimeControl.selecionarTimes(cont)}" update="times"
 					onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
 			</p:column>

@@ -10,6 +10,8 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+
+
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Liga;
@@ -34,7 +36,7 @@ public class TimeControl {
 	@PostConstruct
 	public void init() {
 		listar(null);
-		listarLiga();
+		listarLiga(null);
 	}
 
 	public void confirmar(ActionEvent evt) {
@@ -60,18 +62,19 @@ public class TimeControl {
 
 	public void listar(ActionEvent evt) {
 		try {
-			
 			times = timeDao.listar(); 
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
 	
-	public void listarLiga() {
+	public void listarLiga(ActionEvent evt) {
 		try {
-			ligas = ligaDao.listar();
+			ligas = ligaDao.listar();	
+			
+			
 		} catch (Exception e) {
-			e.getMessage();
+			UtilFaces.addMensagemFaces(e.getMessage());
 		}
 	}
 
@@ -85,6 +88,7 @@ public class TimeControl {
 		
 		try {
 			this.time = timeDao.consultar(time.getId());
+			this.time.getLiga().getNomeLiga();
 
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block

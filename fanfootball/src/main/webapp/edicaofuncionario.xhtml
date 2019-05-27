@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="corpo">
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
+	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
+			
+		<p:panel header="Edição Funcionario" id="panel">
+
+			<h:panelGrid columns="2">
+				<h:outputText value="ID"></h:outputText>
+				<p:inputText disabled="true" value="#{FuncionarioControl.funcionario.matricula}"></p:inputText>
+				<h:outputText value="Nome"></h:outputText>
+				<p:inputText value="#{FuncionarioControl.funcionario.nome}"></p:inputText>
+				<h:outputText value="Cpf "></h:outputText>
+				<p:inputMask disabled="true" value="#{FuncionarioControl.funcionario.cpf }"
+					mask="999.999.999-99"></p:inputMask>
+				<h:outputText value="Data de Nascimento"></h:outputText>
+				<p:inputMask value="#{FuncionarioControl.funcionario.dataNascimento}"
+					mask="99/99/9999"></p:inputMask>
+				<h:outputText value="Email"></h:outputText>
+				<p:inputText value="#{FuncionarioControl.funcionario.contato.email}"></p:inputText>
+				<h:outputText value="Telefone Celular"></h:outputText>
+				<p:inputMask value="#{FuncionarioControl.funcionario.contato.telefoneCelular}"
+					mask="(99)-99999-9999"></p:inputMask>
+				<h:outputText value="Telefone Fixo"></h:outputText>
+				<p:inputMask value="#{FuncionarioControl.funcionario.contato.telefoneFixo}"
+					mask="(99)-9999-9999"></p:inputMask>
+				<h:outputText value="Cargos"></h:outputText>
+				<p:selectOneMenu id="listaCargo"
+					value="#{FuncionarioControl.cargo}"  converter="objectConverter" ajax="false" required="true" >
+					<f:selectItem itemLabel="" itemValue="" />
+					<f:selectItems value="#{FuncionarioControl.cargos}" var="cargo"
+						itemLabel="#{cargo.nomeCargo}" itemValue="#{cargo}" />
+				</p:selectOneMenu>
+				<p:commandButton actionListener="#{FuncionarioControl.confirmar }"
+					value="Salvar">
+				</p:commandButton>
+				<p:commandButton action="listafuncionario.xhtml" value="Listar">
+				</p:commandButton>
+			</h:panelGrid>
+
+		</p:panel>
+
+
+
+	</ui:define>
+</ui:composition>

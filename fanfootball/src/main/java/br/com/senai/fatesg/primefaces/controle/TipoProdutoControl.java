@@ -31,6 +31,10 @@ public class TipoProdutoControl {
 		if(tipoProduto.getDescricao().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor Informar a Descrição do Tipo Produto");
 		}
+		if(tipoProduto.getDescricao().length() > 40) {
+			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
+
+		}
 		else if (tipoProduto.getId() == 0) {
 			try {
 				tipoProdutoDao.incluir(tipoProduto);
@@ -61,10 +65,13 @@ public class TipoProdutoControl {
 	public void listar(ActionEvent evt) {
 		try {
 			tiposProdutos = tipoProdutoDao.listar();
+		
 		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
+	
+	
 
 	public void excluir(TipoProduto tipoProduto) {
 		try {
@@ -84,6 +91,8 @@ public class TipoProdutoControl {
 			// TODO: handle exception
 		}
 	}
+	
+	
 
 	public TipoProduto getTipoProduto() {
 		return tipoProduto;

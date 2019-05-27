@@ -13,6 +13,7 @@ public class TipoProduto {
 	@SequenceGenerator(name = "tipoProduto_seq", sequenceName = "tipoProduto_seq", allocationSize = 1, initialValue = 1)
 	private int id;
 	private String descricao;
+
 	
 	public int getId() {
 		return id;
@@ -26,6 +27,8 @@ public class TipoProduto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	
 	
 	
 }

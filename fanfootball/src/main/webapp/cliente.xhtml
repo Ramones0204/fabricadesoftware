@@ -25,16 +25,25 @@
 				<p:inputText value="#{ClienteControl.cliente.nomeSocial}"></p:inputText>
 				<h:outputText value="Cpf "></h:outputText>
 				<p:inputMask value="#{ClienteControl.cliente.cpf }"
-					mask="999.999.999-99"></p:inputMask>
+					mask="99999999999"></p:inputMask>
 				<h:outputText value="Data de Nascimento"></h:outputText>
 				<p:inputMask value="#{ClienteControl.cliente.dataNascimento}"
 					mask="99/99/9999"></p:inputMask>
 				<h:outputText value="Gênero"></h:outputText>
 				<p:inputText value="#{ClienteControl.cliente.genero}"></p:inputText>
+				<h:outputText value="Sexo"></h:outputText>
+				<p:selectOneMenu value="#{ClienteControl.cliente.sexo}">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Masculino" itemValue="M" />
+					<f:selectItem itemLabel="Feminino" itemValue="F" />
+
+				</p:selectOneMenu>
 				<h:outputText value="Email"></h:outputText>
+
 				<p:inputText value="#{ClienteControl.cliente.contato.email}"></p:inputText>
 				<h:outputText value="Telefone Celular"></h:outputText>
-				<p:inputMask value="#{ClienteControl.cliente.contato.telefoneCelular}"
+				<p:inputMask
+					value="#{ClienteControl.cliente.contato.telefoneCelular}"
 					mask="(99)-99999-9999"></p:inputMask>
 				<h:outputText value="Telefone Fixo"></h:outputText>
 				<p:inputMask value="#{ClienteControl.cliente.contato.telefoneFixo}"

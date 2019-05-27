@@ -12,9 +12,7 @@ public class Marca {
 	@GeneratedValue(generator = "marca_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "marca_seq", sequenceName = "contato_seq", allocationSize = 1, initialValue = 1)
 	private int id;
-	
 	private String nomeMarca;
-
 	public int getId() {
 		return id;
 	}
@@ -30,5 +28,8 @@ public class Marca {
 	public void setNomeMarca(String nomeMarca) {
 		this.nomeMarca = nomeMarca;
 	}
+
+	
+	
 
 }

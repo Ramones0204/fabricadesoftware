@@ -31,6 +31,9 @@ public class LigaControl {
 		if(liga.getNomeLiga().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor informar o nome da Liga");
 		}
+		if(liga.getNomeLiga().length() > 40) {
+			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
+		}
 		else if(liga.getId() == null) {
 			try {
 				ligaDao.incluir(liga);
@@ -66,8 +69,6 @@ public class LigaControl {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
-
 	}
 
 	public void selecionarLigaParaEdicao(Liga liga) {

@@ -22,6 +22,7 @@ public class Cliente implements Serializable {
 	private String senha;
 	@Embedded
 	private Contato contato;
+	private String sexo;
 
 	public int getId() {
 		return id;
@@ -86,5 +87,14 @@ public class Cliente implements Serializable {
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	
 
 }

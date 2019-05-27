@@ -32,6 +32,9 @@ public class CargoControl {
 		if(cargo.getNomeCargo().isEmpty() || cargo.getSalario() == null) {
 			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
 		}
+		if(cargo.getNomeCargo().length() > 40) {
+			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
+		}
 		else if (cargo.getId()== null) {
 			cargoDao.incluir(cargo);
 			listar(evt);
@@ -45,7 +48,7 @@ public class CargoControl {
 				cargo = new Cargo();
 			} catch (Exception e) {
 				// TODO: handle exception
-				UtilFaces.addMensagemFaces("Erro ao Deletar o Cargo " + cargo.getId());
+				UtilFaces.addMensagemFaces("Erro ao Alterar o Cargo " + cargo.getId());
 			}
 		}
 		
@@ -69,7 +72,7 @@ public class CargoControl {
 	public void excluir(Cargo cargo) {
 		try {
 			cargoDao.excluirPorId(cargo.getId());
-			UtilFaces.addMensagemFaces("Cargo " + cargo.getNomeCargo() + "Deletado");
+			UtilFaces.addMensagemFaces("Cargo " + cargo.getNomeCargo() + " Deletado");
 			cargos = cargoDao.listar();
 			
 		} catch (Exception e) {

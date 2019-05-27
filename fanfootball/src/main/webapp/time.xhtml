@@ -7,12 +7,12 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
-	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
+
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<p:panel header="Times" id="panel">
 			<h:panelGrid columns="2">
-				
+
 				<h:outputText value="Id"></h:outputText>
 				<p:inputText disabled="true" value="#{TimeControl.time.id}"></p:inputText>
 				<h:outputText value="Nome Time"></h:outputText>
@@ -24,6 +24,8 @@
 					<f:selectItem itemLabel="Selecione" itemValue="" />
 					<f:selectItem itemLabel="Clube" itemValue="Clube" />
 					<f:selectItem itemLabel="Seleção" itemValue="Seleção" />
+					<f:selectItem itemLabel="Internacional" itemValue="Internacional" />
+
 				</p:selectOneMenu>
 
 				<h:outputText value="Região"></h:outputText>
@@ -123,15 +125,16 @@
 					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
 				</p:selectOneMenu>
 				<h:outputText value="Ligas"></h:outputText>
-				<p:selectOneMenu id="listaLigas" autoUpdate = "true"
-					value="#{TimeControl.liga}"  converter="objectConverter" ajax="false" required="true" >
-					
+				<p:selectOneMenu id="listaLigas" autoUpdate="true"
+					value="#{TimeControl.liga}" converter="objectConverter"
+					ajax="false" required="false">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
 					<f:selectItems value="#{LigaControl.ligas}" var="liga"
-						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}"  />
+						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}" />
 				</p:selectOneMenu>
 				<p:commandButton actionListener="#{TimeControl.confirmar }"
 					value="Confirmar" update="times, panel"></p:commandButton>
-				
+
 			</h:panelGrid>
 		</p:panel>
 
@@ -142,7 +145,7 @@
 			</f:facet>
 			<p:column sortBy="#{cont.id}" width="15%">
 				<f:facet name="header">
-					<h:outputText value="ID" ></h:outputText>
+					<h:outputText value="ID"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
@@ -189,8 +192,8 @@
 				</p:commandButton>
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
-					actionListener="#{TimeControl.selecionarTimes(cont)}" update="times"
-					onclick="PF('dialogNovoContato').show();">
+					actionListener="#{TimeControl.selecionarTimes(cont)}"
+					update="times" onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
 			</p:column>
 

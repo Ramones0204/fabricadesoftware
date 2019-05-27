@@ -6,10 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Marca;
@@ -18,7 +16,7 @@ import br.com.senai.fatesg.primefaces.persistencia.MarcaDao;
 @Named("MarcaControl")
 @Scope("conversation")
 public class MarcaControl {
-	
+
 	private Marca marca = new Marca();
 	@Autowired
 	private MarcaDao marcaDao;
@@ -31,10 +29,12 @@ public class MarcaControl {
 	}
 
 	public void confirmar(ActionEvent evt) {
-		if(marca.getNomeMarca().isEmpty()) {
+		if (marca.getNomeMarca().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor informar o Nome Da Marca");
 		}
-		else if(marca.getId() == 0) {
+		if (marca.getNomeMarca().length() > 40) {
+			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
+		} else if (marca.getId() == 0) {
 			try {
 				marcaDao.incluir(marca);
 				listar(evt);
@@ -52,16 +52,14 @@ public class MarcaControl {
 			} catch (Exception e) {
 				// TODO: handle exception
 				UtilFaces.addMensagemFaces("Erro ao Altar a Marca");
-
 			}
-			
 		}
-		
+
 	}
 
 	public void listar(ActionEvent evt) {
 		try {
-			marcas = marcaDao.listar(); 
+			marcas = marcaDao.listar();
 		} catch (Exception e) {
 			UtilFaces.addMensagemFaces("Erro ao listar as marcas ");
 		}
@@ -70,6 +68,8 @@ public class MarcaControl {
 	public void excluir(Marca marca) {
 		try {
 			marcaDao.excluirPorId(marca.getId());
+
+
 			UtilFaces.addMensagemFaces("Marca " + marca.getNomeMarca() + " Excluida com sucesso");
 			marcas = marcaDao.listar();
 		} catch (Exception e) {
@@ -88,7 +88,7 @@ public class MarcaControl {
 		}
 
 	}
-
+	
 	public Marca getMarca() {
 		return marca;
 	}
@@ -100,8 +100,5 @@ public class MarcaControl {
 	public List<Marca> getMarcas() {
 		return marcas;
 	}
-	
-	
-	
 
 }

@@ -20,7 +20,7 @@ public class EmailJava {
 			email.setFrom("ramonroliveirafilho@gmail.com");
 			email.setSubject("TestMail");
 			email.setMsg("Deu certo o envio :-)");
-			email.addTo("ramonroliveirafilho@outlook.com");
+			email.addTo("maxwell201414@gmail.com");
 			email.send();
 		} catch (Exception e) {
 			// TODO: handle exception

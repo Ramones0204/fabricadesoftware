@@ -39,10 +39,8 @@ public class FuncionarioControl {
 		if(funcionario.getNome().isEmpty())  {
 			UtilFaces.addMensagemFaces("O Campo Nome devem ser informados");
 		}
-		if(funcionario.getContato().getEmail().isEmpty()) {
-			UtilFaces.addMensagemFaces("O email deve ser informado");
-		}
-		if(funcionario.getCpf().isEmpty()) {
+		
+		else if(funcionario.getCpf().isEmpty()) {
 			UtilFaces.addMensagemFaces("O CPF deve ser informado");
 		}
 		else if (funcionario.getMatricula()== 0) {

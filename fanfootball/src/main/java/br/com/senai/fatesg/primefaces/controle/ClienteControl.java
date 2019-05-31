@@ -64,12 +64,12 @@ public class ClienteControl {
 				UtilFaces.addMensagemFaces("CPF invalido");
 			} else if (cliente.getId() == 0) {
 				try {
+					
 					clienteDao.incluir(cliente);
 					enviarEmail(cliente);
 					listar(evt);
 					// cliente = new Cliente();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
-					limpar();
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
 					System.out.println(e.getMessage());
@@ -124,10 +124,10 @@ public class ClienteControl {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("maxwell201414@gmail.com", "!@#max10123#@!"));
+			email.setAuthenticator(new DefaultAuthenticator("fanfootballads@gmail.com", "futebol.10"));
 			email.setSSLOnConnect(true);
-			email.setFrom("ramonroliveirafilho@gmail.com");
-			email.setSubject("TestMail");
+			email.setFrom("fanfootballads@gmail.com");
+			email.setSubject("Email de confirmação");
 			email.setMsg("Seja Bem Vindo a fanfootball");
 			email.addTo(cliente.getContato().getEmail());
 			email.send();

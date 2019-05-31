@@ -29,10 +29,13 @@ public class CargoControl {
 	}
 
 	public void confirmar(ActionEvent evt) throws Exception {
-		if(cargo.getNomeCargo().isEmpty() || cargo.getSalario() == null) {
+		if(cargo.getNomeCargo().isEmpty()) {
 			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
 		}
-		if(cargo.getNomeCargo().length() > 40) {
+		else if(cargo.getSalario() == null) {
+			UtilFaces.addMensagemFaces("Os Campos Nome é Salário devem ser informados");
+		}
+		else if(cargo.getNomeCargo().length() > 40) {
 			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
 		}
 		else if (cargo.getId()== null) {

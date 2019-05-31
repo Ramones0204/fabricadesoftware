@@ -15,9 +15,9 @@ public class EmailJava {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("maxwell201414@gmail.com", "!@#max10123#@!"));
+			email.setAuthenticator(new DefaultAuthenticator("fanfootballads@gmail.com", "futebol.10"));
 			email.setSSLOnConnect(true);
-			email.setFrom("ramonroliveirafilho@gmail.com");
+			email.setFrom("fanfootballads@gmail.com");
 			email.setSubject("TestMail");
 			email.setMsg("Deu certo o envio :-)");
 			email.addTo("maxwell201414@gmail.com");

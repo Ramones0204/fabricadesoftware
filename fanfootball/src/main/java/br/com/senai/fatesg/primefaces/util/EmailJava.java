@@ -19,8 +19,13 @@ public class EmailJava {
 			email.setSSLOnConnect(true);
 			email.setFrom("ramonroliveirafilho@gmail.com");
 			email.setSubject("TestMail");
+<<<<<<< HEAD
 			email.setMsg("Deu certo o envio :-)");
 			email.addTo("maxwell201414@gmail.com");
+=======
+			email.setMsg("Seja bem vindo a FanFootball");
+			//email.addTo("ramonroliveirafilho@outlook.com");
+>>>>>>> branch 'master' of https://github.com/Ramones0204/fabricadesoftware.git
 			email.send();
 		} catch (Exception e) {
 			// TODO: handle exception

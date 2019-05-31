@@ -8,6 +8,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.SimpleEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -15,6 +18,7 @@ import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.senai.fatesg.primefaces.entidade.Cliente;
 import br.com.senai.fatesg.primefaces.entidade.Contato;
 import br.com.senai.fatesg.primefaces.persistencia.ClienteDao;
+import br.com.senai.fatesg.primefaces.util.EmailJava;
 import br.com.senai.fatesg.primefaces.util.ValidaCPF;
 
 @Named("ClienteControl")
@@ -61,10 +65,10 @@ public class ClienteControl {
 					|| cliente.getCpf().equals("6666666666") || cliente.getCpf().equals("7777777777")
 					|| cliente.getCpf().equals("8888888888") || cliente.getCpf().equals("9999999999")) {
 				UtilFaces.addMensagemFaces("CPF invalido");
-			}
-			else if (cliente.getId() == 0) {
+			} else if (cliente.getId() == 0) {
 				try {
 					clienteDao.incluir(cliente);
+					enviarEmail(cliente);
 					listar(evt);
 					// cliente = new Cliente();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
@@ -81,10 +85,9 @@ public class ClienteControl {
 					UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
 				}
 			}
-			
+
 		}
 
-		
 	}
 
 	public void listar(ActionEvent evt) {
@@ -115,6 +118,24 @@ public class ClienteControl {
 			UtilFaces.addMensagemFaces("Erro ao Consultar CLiente");
 		}
 
+	}
+
+	public void enviarEmail(Cliente cliente) {
+		try {
+			Email email = new SimpleEmail();
+			email.setHostName("smtp.googlemail.com");
+			email.setSmtpPort(465);
+			email.setAuthenticator(new DefaultAuthenticator("ramonroliveirafilho@gmail.com", "1104Saopaulo"));
+			email.setSSLOnConnect(true);
+			email.setFrom("ramonroliveirafilho@gmail.com");
+			email.setSubject("TestMail");
+			email.setMsg("Seja Bem Vindo a fanfootball");
+			email.addTo(cliente.getContato().getEmail());
+			email.send();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	public String limpar() {

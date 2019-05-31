@@ -1,7 +1,5 @@
 package br.com.senai.fatesg.primefaces.util;
 
-import org.hibernate.validator.constraints.Email;
-
 public class EnviarEmail {
 	
 	public EnviarEmail() {

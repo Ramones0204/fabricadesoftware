@@ -15,12 +15,13 @@ public class EmailJava {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("ramonroliveirafilho@gmail.com", "1104Saopaulo"));
+			email.setAuthenticator(new DefaultAuthenticator("maxwell201414@gmail.com", "!@#max10123#@!"));
 			email.setSSLOnConnect(true);
 			email.setFrom("ramonroliveirafilho@gmail.com");
 			email.setSubject("TestMail");
+			email.setMsg("Deu certo o envio :-)");
+			email.addTo("maxwell201414@gmail.com");
 			email.setMsg("Seja bem vindo a FanFootball");
-			//email.addTo("ramonroliveirafilho@outlook.com");
 			email.send();
 		} catch (Exception e) {
 			// TODO: handle exception

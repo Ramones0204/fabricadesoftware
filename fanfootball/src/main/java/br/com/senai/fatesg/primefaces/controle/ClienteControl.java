@@ -1,7 +1,6 @@
 package br.com.senai.fatesg.primefaces.controle;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,8 +17,6 @@ import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.senai.fatesg.primefaces.entidade.Cliente;
 import br.com.senai.fatesg.primefaces.entidade.Contato;
 import br.com.senai.fatesg.primefaces.persistencia.ClienteDao;
-import br.com.senai.fatesg.primefaces.util.EmailJava;
-import br.com.senai.fatesg.primefaces.util.ValidaCPF;
 
 @Named("ClienteControl")
 @Scope("conversation")
@@ -127,7 +124,7 @@ public class ClienteControl {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("ramonroliveirafilho@gmail.com", "1104Saopaulo"));
+			email.setAuthenticator(new DefaultAuthenticator("maxwell201414@gmail.com", "!@#max10123#@!"));
 			email.setSSLOnConnect(true);
 			email.setFrom("ramonroliveirafilho@gmail.com");
 			email.setSubject("TestMail");

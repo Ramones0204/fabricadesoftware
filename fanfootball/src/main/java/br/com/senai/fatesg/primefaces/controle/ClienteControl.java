@@ -72,8 +72,10 @@ public class ClienteControl {
 					listar(evt);
 					// cliente = new Cliente();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
+					limpar();
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
+					System.out.println(e.getMessage());
 				}
 			} else {
 				try {

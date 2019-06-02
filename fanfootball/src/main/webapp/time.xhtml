@@ -125,6 +125,7 @@
 					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
 				</p:selectOneMenu>
 				<h:outputText value="Ligas"></h:outputText>
+				
 				<p:selectOneMenu id="listaLigas" autoUpdate="true"
 					value="#{TimeControl.liga}" converter="objectConverter"
 					ajax="false" required="false">
@@ -193,7 +194,7 @@
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
 					actionListener="#{TimeControl.selecionarTimes(cont)}"
-					update="times" onclick="PF('dialogNovoContato').show();">
+					update="times " onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
 			</p:column>
 

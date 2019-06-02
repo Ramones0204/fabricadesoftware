@@ -64,15 +64,16 @@ public class ClienteControl {
 				UtilFaces.addMensagemFaces("CPF invalido");
 			} else if (cliente.getId() == 0) {
 				try {
-					
 					clienteDao.incluir(cliente);
 					enviarEmail(cliente);
 					listar(evt);
-					// cliente = new Cliente();
+					//cliente = new Cliente();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
-					System.out.println(e.getMessage());
+					UtilFaces.addMensagemFaces("Cliente ou Email já cadastrado" );
+					UtilFaces.addMensagemFaces(e.getMessage());
+					
 				}
 			} else {
 				try {

@@ -1,6 +1,8 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ public class Cliente implements Serializable {
 	private int id;
 	private String nome;
 	private String nomeSocial;
+	@Column(unique = true)
 	private String cpf;
 	private String dataNascimento;
 	private String genero;

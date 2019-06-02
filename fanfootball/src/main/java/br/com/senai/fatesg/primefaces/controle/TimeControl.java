@@ -145,7 +145,7 @@ public class TimeControl {
 		try {
 			this.time = timeDao.consultar(time.getId());
 			//this.time.getLiga().getNomeLiga();
-
+			
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

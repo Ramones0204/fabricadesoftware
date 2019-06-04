@@ -11,14 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Cliente implements Serializable {
+public class Cliente implements Serializable  {
 	@Id
 	@GeneratedValue(generator = "cliente_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1, initialValue = 1)
 	private int id;
 	private String nome;
 	private String nomeSocial;
-	@Column(unique = true)
+	@Column(unique = true)	
 	private String cpf;
 	private String dataNascimento;
 	private String genero;
@@ -99,5 +99,6 @@ public class Cliente implements Serializable {
 		this.sexo = sexo;
 	}
 	
-
+	
+	
 }

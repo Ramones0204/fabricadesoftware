@@ -32,7 +32,7 @@ public class MarcaControl {
 		if (marca.getNomeMarca().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor informar o Nome Da Marca");
 		}
-		if (marca.getNomeMarca().length() > 40) {
+		else if (marca.getNomeMarca().length() > 40) {
 			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
 		} else if (marca.getId() == 0) {
 			try {

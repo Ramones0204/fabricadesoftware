@@ -47,7 +47,9 @@ public class TimeControl {
 				UtilFaces.addMensagemFaces("Favor informar a estado do time");
 			} else if (!time.getPais().equals("Brasil")) {
 				UtilFaces.addMensagemFaces("Para o tipo clube deve ser informado o pais Brasil");
-			} else if (time.getId() == 0) {
+			}
+
+			else if (time.getId() == 0) {
 				try {
 					time.setLiga(liga);
 					timeDao.incluir(time);
@@ -64,7 +66,7 @@ public class TimeControl {
 				time = new Time();
 			}
 		}
-		
+
 		else if (time.getTipoTime().equals("Seleção")) {
 			if (time.getPais().equals("")) {
 				UtilFaces.addMensagemFaces("Favor informar o pais da seleção");
@@ -72,7 +74,9 @@ public class TimeControl {
 				UtilFaces.addMensagemFaces("não pode ser informado a região para o tipo seleção");
 			} else if (!time.getEstado().equals("")) {
 				UtilFaces.addMensagemFaces("não pode ser informado o estado para o tipo seleção");
-			} else if (time.getId() == 0) {
+			}
+
+			else if (time.getId() == 0) {
 				try {
 					time.setLiga(liga);
 					timeDao.incluir(time);
@@ -88,17 +92,18 @@ public class TimeControl {
 				listar(evt);
 				time = new Time();
 			}
-		}
-		else if (time.getTipoTime().equals("Internacional")) {
+		} else if (time.getTipoTime().equals("Internacional")) {
 			if (time.getPais().equals("")) {
 				UtilFaces.addMensagemFaces("Favor informar o pais da time");
 			} else if (!time.getRegiao().equals("")) {
 				UtilFaces.addMensagemFaces("não pode ser informado a região para o tipo internacional");
 			} else if (!time.getEstado().equals("")) {
 				UtilFaces.addMensagemFaces("não pode ser informado o estado para o tipo internacional");
-			}  else if (time.getPais().equals("Brasil")) {
+			} else if (time.getPais().equals("Brasil")) {
 				UtilFaces.addMensagemFaces("O pais não pode ser o Brasil");
-			} else if (time.getId() == 0) {
+			}
+
+			else if (time.getId() == 0) {
 				try {
 					time.setLiga(liga);
 					timeDao.incluir(time);
@@ -144,8 +149,8 @@ public class TimeControl {
 
 		try {
 			this.time = timeDao.consultar(time.getId());
-			//this.time.getLiga().getNomeLiga();
-			
+			// this.time.getLiga().getNomeLiga();
+
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

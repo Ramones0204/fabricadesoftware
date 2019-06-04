@@ -46,7 +46,7 @@ public class CargoControl {
 		} else {
 			try {
 				cargoDao.alterar(cargo);
-				UtilFaces.addMensagemFaces("Cargo Alterado com sucesso");
+				UtilFaces.addMensagemFaces("Cargo Salvo com sucesso");
 				listar(evt);
 				cargo = new Cargo();
 			} catch (Exception e) {

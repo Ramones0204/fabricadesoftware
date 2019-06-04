@@ -31,7 +31,7 @@ public class TipoProdutoControl {
 		if(tipoProduto.getDescricao().isEmpty()) {
 			UtilFaces.addMensagemFaces("Favor Informar a Descrição do Tipo Produto");
 		}
-		if(tipoProduto.getDescricao().length() > 40) {
+		else if(tipoProduto.getDescricao().length() > 40) {
 			UtilFaces.addMensagemFaces("Números de caracteres maximos atingido");
 
 		}

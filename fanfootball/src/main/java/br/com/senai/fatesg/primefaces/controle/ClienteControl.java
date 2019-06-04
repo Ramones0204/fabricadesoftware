@@ -17,10 +17,11 @@ import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.senai.fatesg.primefaces.entidade.Cliente;
 import br.com.senai.fatesg.primefaces.entidade.Contato;
 import br.com.senai.fatesg.primefaces.persistencia.ClienteDao;
+import br.com.senai.fatesg.primefaces.util.SendEmail;
 
 @Named("ClienteControl")
 @Scope("conversation")
-public class ClienteControl {
+public class ClienteControl  {
 
 	private Cliente cliente = new Cliente();
 	private Contato contato = new Contato();
@@ -65,13 +66,14 @@ public class ClienteControl {
 			} else if (cliente.getId() == 0) {
 				try {
 					clienteDao.incluir(cliente);
-					enviarEmail(cliente);
+					SendEmail s = new SendEmail(cliente.getContato().getEmail());
+					s.start();
+					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
 					listar(evt);
 					//cliente = new Cliente();
-					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
-					UtilFaces.addMensagemFaces("Cliente ou Email já cadastrado" );
+					UtilFaces.addMensagemFaces("CPF ou Email já cadastrado" );
 					UtilFaces.addMensagemFaces(e.getMessage());
 					
 				}
@@ -120,7 +122,8 @@ public class ClienteControl {
 
 	}
 
-	public void enviarEmail(Cliente cliente) {
+	public void enviarEmail(Cliente cliente)  {
+		
 		try {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
@@ -176,6 +179,11 @@ public class ClienteControl {
 
 	public void setContato(Contato contato) {
 		this.contato = contato;
+	
+
+
 	}
+
+
 
 }

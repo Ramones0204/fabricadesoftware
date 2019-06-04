@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Contato implements Serializable {
     
-	@Column(unique=true)
+	@Column(unique = true)
 	private String email;
 	private String telefoneFixo;
 	private String telefoneCelular;

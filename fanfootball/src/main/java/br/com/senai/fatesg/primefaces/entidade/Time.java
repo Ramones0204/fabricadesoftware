@@ -4,6 +4,8 @@ package br.com.senai.fatesg.primefaces.entidade;
 
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-public class Time  {
+public class Time implements Serializable  {
 	
 	@Id
 	@GeneratedValue(generator = "time_seq", strategy = GenerationType.SEQUENCE)

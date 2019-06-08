@@ -5,10 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import org.hibernate.validator.constraints.Email;
+
+import br.com.ambientinformatica.util.AmbientValidator;
+
 @Embeddable
 public class Contato implements Serializable {
     
-	@Column(unique = true)
+	@Column(unique = true, nullable = false )
+	@Email(message = "Informe um endereço de e-mail válido", groups = AmbientValidator.class)	
 	private String email;
 	private String telefoneFixo;
 	private String telefoneCelular;

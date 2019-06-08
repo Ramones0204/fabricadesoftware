@@ -28,7 +28,6 @@ public class ClienteControl  {
 	@Autowired
 	private ClienteDao clienteDao;
 	private List<Cliente> clientes = new ArrayList<Cliente>();
-
 	@PostConstruct
 	public void init() {
 		listar(null);
@@ -45,7 +44,6 @@ public class ClienteControl  {
 		}
 		if (cliente.getContato().getEmail().length() > 80) {
 			UtilFaces.addMensagemFaces("Tamanho invalido");
-
 		}
 		if (cliente.getNomeSocial().length() > 45) {
 			UtilFaces.addMensagemFaces("Tamanho invalido");
@@ -70,7 +68,7 @@ public class ClienteControl  {
 					s.start();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
 					listar(evt);
-					//cliente = new Cliente();
+					
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
 					UtilFaces.addMensagemFaces("CPF ou Email já cadastrado" );
@@ -82,7 +80,7 @@ public class ClienteControl  {
 					clienteDao.alterar(cliente);
 					UtilFaces.addMensagemFaces("Cliente" + cliente.getNome() + " Alterado com sucesso");
 					listar(evt);
-					// cliente = new Cliente();
+					
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
 				}
@@ -120,26 +118,6 @@ public class ClienteControl  {
 			UtilFaces.addMensagemFaces("Erro ao Consultar CLiente");
 		}
 
-	}
-
-	public void enviarEmail(Cliente cliente)  {
-		
-		try {
-			Email email = new SimpleEmail();
-			email.setHostName("smtp.googlemail.com");
-			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("fanfootballads@gmail.com", "futebol.10"));
-			email.setSSLOnConnect(true);
-			email.setFrom("fanfootballads@gmail.com");
-			email.setSubject("Email de confirmação");
-			email.setMsg("Seja Bem Vindo a fanfootball");
-			email.addTo(cliente.getContato().getEmail());
-			email.send();
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.getMessage());
-		}
 	}
 
 	public String limpar() {
@@ -180,8 +158,6 @@ public class ClienteControl  {
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	
-
-
 	}
 
 

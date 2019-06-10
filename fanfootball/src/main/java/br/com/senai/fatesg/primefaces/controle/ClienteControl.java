@@ -7,9 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.Email;
-import org.apache.commons.mail.SimpleEmail;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -54,6 +52,7 @@ public class ClienteControl  {
 		if (cliente.getCpf().isEmpty()) {
 			UtilFaces.addMensagemFaces("O CPF deve ser informado");
 		}
+		
 		if (!cliente.getCpf().isEmpty()) {
 			if (cliente.getCpf().equals("00000000000") || cliente.getCpf().equals("11111111111")
 					|| cliente.getCpf().equals("2222222222") || cliente.getCpf().equals("3333333333")
@@ -61,13 +60,15 @@ public class ClienteControl  {
 					|| cliente.getCpf().equals("6666666666") || cliente.getCpf().equals("7777777777")
 					|| cliente.getCpf().equals("8888888888") || cliente.getCpf().equals("9999999999")) {
 				UtilFaces.addMensagemFaces("CPF invalido");
-			} else if (cliente.getId() == 0) {
+				
+	}
+	else if (cliente.getId() == null) {
 				try {
 					clienteDao.incluir(cliente);
 					SendEmail s = new SendEmail(cliente.getContato().getEmail());
 					s.start();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
-					listar(evt);
+				//	listar(evt);
 					
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
@@ -79,7 +80,7 @@ public class ClienteControl  {
 				try {
 					clienteDao.alterar(cliente);
 					UtilFaces.addMensagemFaces("Cliente" + cliente.getNome() + " Alterado com sucesso");
-					listar(evt);
+				//	listar(evt);
 					
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
@@ -92,7 +93,6 @@ public class ClienteControl  {
 
 	public void listar(ActionEvent evt) {
 		try {
-
 			clientes = clienteDao.listar();
 		} catch (Exception e) {
 			UtilFaces.addMensagemFaces("Erro ao listar os clientes");

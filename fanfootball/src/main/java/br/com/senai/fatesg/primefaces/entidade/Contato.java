@@ -8,13 +8,17 @@ import javax.persistence.Embeddable;
 import org.hibernate.validator.constraints.Email;
 
 import br.com.ambientinformatica.util.AmbientValidator;
+import br.com.ambientinformatica.util.Entidade;
 
 @Embeddable
-public class Contato implements Serializable {
+public class Contato extends Entidade implements Serializable {
     
+	private static final long serialVersionUID = 1L;
+
 	@Column(unique = true, nullable = false )
 	@Email(message = "Informe um endereço de e-mail válido", groups = AmbientValidator.class)	
 	private String email;
+	
 	private String telefoneFixo;
 	private String telefoneCelular;
 	
@@ -35,6 +39,12 @@ public class Contato implements Serializable {
 	}
 	public void setTelefoneCelular(String telefoneCelular) {
 		this.telefoneCelular = telefoneCelular;
+	}
+	
+	@Override
+	public Object getId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

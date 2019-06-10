@@ -102,6 +102,8 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1100-jdbc41</version>
 		</dependency>
+	
+
 	</dependencies>
 
 	<repositories>

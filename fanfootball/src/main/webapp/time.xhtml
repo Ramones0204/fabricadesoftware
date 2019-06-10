@@ -194,7 +194,8 @@
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
 					actionListener="#{TimeControl.selecionarTimes(cont)}"
-					update="times " onclick="PF('dialogNovoContato').show();">
+					update="times " onclick="PF('dialogNovoContato').show();"
+					converter="objectConverter">
 				</p:commandButton>
 			</p:column>
 

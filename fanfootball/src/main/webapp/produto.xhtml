@@ -11,88 +11,93 @@
 		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<p:panel header="Produto" id="panel">
-			<h:panelGrid columns="4">
-				<h:outputText value="Id"></h:outputText>
-				<p:inputText disabled="true" 
-					value="#{ProdutoControl.produto.codigo}"></p:inputText>
+			<h:form enctype="multipart/form-data">
+				<h:panelGrid columns="4">
+					<h:outputText value="Id"></h:outputText>
+					<p:inputText disabled="true"
+						value="#{ProdutoControl.produto.codigo}"></p:inputText>
 
-				<h:outputText value="Titulo "></h:outputText>
-				<p:inputText value="#{ProdutoControl.produto.tituloProduto}"></p:inputText>
+					<h:outputText value="Titulo "></h:outputText>
+					<p:inputText value="#{ProdutoControl.produto.tituloProduto}"></p:inputText>
 
-				<h:outputText value="Descrição "></h:outputText>
-				<p:inputTextarea value="#{ProdutoControl.produto.descProduto}"></p:inputTextarea>
+					<h:outputText value="Descrição "></h:outputText>
+					<p:inputTextarea value="#{ProdutoControl.produto.descProduto}"></p:inputTextarea>
 
-				<h:outputText value="Cor "></h:outputText>
-				<p:inputText value="#{ProdutoControl.produto.cor}"></p:inputText>
+					<h:outputText value="Cor "></h:outputText>
+					<p:inputText value="#{ProdutoControl.produto.cor}"></p:inputText>
 
-				<h:outputText value="Preço "></h:outputText>
-				<p:inputText value="#{ProdutoControl.produto.preco}" ></p:inputText>
-				<h:outputText value="Imagem "></h:outputText>
-				<p:fileUpload value="#{ProdutoControl.produto.imagem}" mode="simple"  />
-				<h:outputText value="Gola"></h:outputText>
-				<p:selectOneMenu value="#{ProdutoControl.produto.gola}">
-					<f:selectItem itemLabel="Selecione" />
-					<f:selectItems value="#{ProdutoControl.golas}" var="gola"
-						itemValue="#{gola}" itemLabel="#{gola.label}" />
-				</p:selectOneMenu>
-				<h:outputText value="Tamanho"></h:outputText>
-				<p:selectOneMenu value="#{ProdutoControl.produto.tamanho}">
-					<f:selectItem itemLabel="Selecione" />
-					<f:selectItems value="#{ProdutoControl.tamanhos}" var="tamanho"
-						itemValue="#{tamanho}" itemLabel="#{tamanho.label}" />
-				</p:selectOneMenu>
+					<h:outputText value="Preço "></h:outputText>
+					<p:inputText value="#{ProdutoControl.produto.preco}"></p:inputText>
+					<h:outputText value="Imagem "></h:outputText>
+					<p:fileUpload value="#{ProdutoControl.produto.imagem}"
+						mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						dragDropSupport="true" />
+					<h:outputText value="Gola"></h:outputText>
+					<p:selectOneMenu value="#{ProdutoControl.produto.gola}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{ProdutoControl.golas}" var="gola"
+							itemValue="#{gola}" itemLabel="#{gola.label}" />
+					</p:selectOneMenu>
+					<h:outputText value="Tamanho"></h:outputText>
+					<p:selectOneMenu value="#{ProdutoControl.produto.tamanho}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{ProdutoControl.tamanhos}" var="tamanho"
+							itemValue="#{tamanho}" itemLabel="#{tamanho.label}" />
+					</p:selectOneMenu>
 
-				<h:outputText value="Manga"></h:outputText>
+					<h:outputText value="Manga"></h:outputText>
 
-				<p:selectOneMenu value="#{ProdutoControl.produto.manga}"
-					converter="objectConverter">
-					<f:selectItem itemLabel="Selecione" />
-					<f:selectItems value="#{ProdutoControl.mangas}" var="manga"
-						itemValue="#{manga}" itemLabel="#{manga}" />
-				</p:selectOneMenu>
+					<p:selectOneMenu value="#{ProdutoControl.produto.manga}"
+						converter="objectConverter">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{ProdutoControl.mangas}" var="manga"
+							itemValue="#{manga}" itemLabel="#{manga}" />
+					</p:selectOneMenu>
 
-				<h:outputText value="Origem"></h:outputText>
-				<p:selectOneMenu value="#{ProdutoControl.produto.origemProduto}">
-					<f:selectItem itemLabel="Selecione" />
-					<f:selectItems value="#{ProdutoControl.origemProdutos}"
-						var="origemProduto" itemValue="#{origemProduto}"
-						itemLabel="#{origemProduto}" />
-				</p:selectOneMenu>
-				<h:outputText value="Marca "></h:outputText>
+					<h:outputText value="Origem"></h:outputText>
+					<p:selectOneMenu value="#{ProdutoControl.produto.origemProduto}">
+						<f:selectItem itemLabel="Selecione" />
+						<f:selectItems value="#{ProdutoControl.origemProdutos}"
+							var="origemProduto" itemValue="#{origemProduto}"
+							itemLabel="#{origemProduto}" />
+					</p:selectOneMenu>
+					<h:outputText value="Marca "></h:outputText>
 
-				<p:selectOneMenu id="listaMarcas" autoUpdate="true"
-					value="#{ProdutoControl.marca}" converter="objectConverter"
-					ajax="false" required="false">
-					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{MarcaControl.marcas}" var="marca"
-						itemLabel="#{marca.nomeMarca}" itemValue="#{Marca}" />
-				</p:selectOneMenu>
-				<h:outputText value="Time "></h:outputText>
+					<p:selectOneMenu id="listaMarcas" autoUpdate="true"
+						value="#{ProdutoControl.marca}" converter="objectConverter"
+						ajax="false" required="false">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItems value="#{MarcaControl.marcas}" var="marca"
+							itemLabel="#{marca.nomeMarca}" itemValue="#{Marca}" />
+					</p:selectOneMenu>
+					<h:outputText value="Time "></h:outputText>
 
-				<p:selectOneMenu id="listarTime" autoUpdate="true"
-					value="#{ProdutoControl.time}" converter="objectConverter"
-					ajax="false" required="false">
-					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{TimeControl.times}" var="time"
-						itemLabel="#{time.nomeTime}" itemValue="#{Time}" />
-				</p:selectOneMenu>
+					<p:selectOneMenu id="listarTime" autoUpdate="true"
+						value="#{ProdutoControl.time}" converter="objectConverter"
+						ajax="false" required="false">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItems value="#{TimeControl.times}" var="time"
+							itemLabel="#{time.nomeTime}" itemValue="#{Time}" />
+					</p:selectOneMenu>
 
-				<h:outputText value="Tipo Produto "></h:outputText>
+					<h:outputText value="Tipo Produto "></h:outputText>
 
-				<p:selectOneMenu id="listarTipoProduto" autoUpdate="true"
-					value="#{ProdutoControl.tipoProduto}" converter="objectConverter"
-					ajax="false" required="false">
-					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{TipoProdutoControl.tiposProdutos}"
-						var="tipoProduto" itemLabel="#{tipoProduto.descricao}"
-						itemValue="#{TipoProduto}" />
-				</p:selectOneMenu>
+					<p:selectOneMenu id="listarTipoProduto" autoUpdate="true"
+						value="#{ProdutoControl.tipoProduto}" converter="objectConverter"
+						ajax="false" required="false">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItems value="#{TipoProdutoControl.tiposProdutos}"
+							var="tipoProduto" itemLabel="#{tipoProduto.descricao}"
+							itemValue="#{TipoProduto}" />
+					</p:selectOneMenu>
 
 
 
-				<p:commandButton actionListener="#{ProdutoControl.confirmar }"
-					value="Confirmar" update="produtos, panel"></p:commandButton>
-			</h:panelGrid>
+					<p:commandButton actionListener="#{ProdutoControl.confirmar }"
+						value="Confirmar" update="produtos, panel"></p:commandButton>
+				</h:panelGrid>
+			</h:form>
+
 		</p:panel>
 
 

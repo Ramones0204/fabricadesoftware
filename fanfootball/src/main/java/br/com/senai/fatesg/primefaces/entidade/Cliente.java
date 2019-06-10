@@ -10,24 +10,38 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import br.com.ambientinformatica.jpa.util.CpfCnpj;
+import br.com.ambientinformatica.util.AmbientValidator;
+import br.com.ambientinformatica.util.Entidade;
+
 @Entity
-public class Cliente implements Serializable  {
+public class Cliente extends Entidade implements Serializable  {
+
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(generator = "cliente_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1, initialValue = 1)
-	private int id;
+	private long id;
+	
 	private String nome;
 	private String nomeSocial;
-	@Column(unique = true)	
+	
+	@CpfCnpj(message = "CPF inválido teste", groups = AmbientValidator.class)
+	@Column(unique = true )	
 	private String cpf;
+	
 	private String dataNascimento;
 	private String genero;
 	private String senha;
+	
 	@Embedded
 	private Contato contato;
 	private String sexo;
 
-	public int getId() {
+
+
+	public Object getId() {
 		return id;
 	}
 

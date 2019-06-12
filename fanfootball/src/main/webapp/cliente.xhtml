@@ -48,22 +48,27 @@
 				<h:outputText value="Telefone Fixo"></h:outputText>
 				<p:inputMask value="#{ClienteControl.cliente.contato.telefoneFixo}"
 					mask="(99)-9999-9999"></p:inputMask>
-					
-					
+
+
 				<h:outputLabel for="pwd1" value="Senha" />
-				<p:password id="pwd1" value="#{ClienteControl.cliente.senha}" match="pwd2"
-					label="Password 1" required="true"  feedback="true"/>
+				<p:password id="pwd1" value="#{ClienteControl.cliente.senha}"
+					match="pwd2" label="Password 1" required="true" feedback="true" />
 
 				<h:outputLabel for="pwd2" value="Senha (Confirmar)" />
 				<p:password id="pwd2" value="#{ClienteControl.cliente.senha}"
 					label="Password 2" required="true" />
 
+
 				<p:commandButton actionListener="#{ClienteControl.confirmar }"
 					value="Salvar">
 				</p:commandButton>
-			
+
+
 				<h:commandButton action="#{ClienteControl.limpar}" value="Limpar">
 				</h:commandButton>
+				<a href="menuADM.html">
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 			</h:panelGrid>
 
 		</p:panel>

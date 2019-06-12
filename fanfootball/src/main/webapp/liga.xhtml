@@ -7,17 +7,20 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
-	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
 
-		<p:panel header="Gestão de Ligas" id="panel" >
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
+
+		<p:panel header="Gestão de Ligas" id="panel">
 			<h:panelGrid columns="2">
-				<h:outputText value="ID" ></h:outputText>
-				<p:inputText  disabled="true" value="#{LigaControl.liga.id}"></p:inputText>
+				<h:outputText value="ID"></h:outputText>
+				<p:inputText disabled="true" value="#{LigaControl.liga.id}"></p:inputText>
 				<h:outputText value="Nome"></h:outputText>
 				<p:inputText value="#{LigaControl.liga.nomeLiga}"></p:inputText>
-				<p:commandButton   actionListener="#{LigaControl.confirmar }"
-					value="Salvar" update="ligas, panel" ></p:commandButton>
+				<p:commandButton actionListener="#{LigaControl.confirmar }"
+					value="Salvar" update="ligas, panel"></p:commandButton>
+				<a href="menuADM.html">
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 			</h:panelGrid>
 
 		</p:panel>
@@ -47,14 +50,14 @@
 					style="width: 20px; height:20px;"
 					actionListener="#{LigaControl.excluir(cont)}" update="ligas">
 				</p:commandButton>
-				
+
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
 					actionListener="#{LigaControl.selecionarLigaParaEdicao(cont)}"
 					onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
 			</p:column>
-			
+
 		</p:dataTable>
 
 	</ui:define>

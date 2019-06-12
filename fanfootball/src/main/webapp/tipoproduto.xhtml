@@ -7,22 +7,27 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
-	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
+
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<p:panel header="Tipo Produto" id="panel">
 			<h:panelGrid columns="2">
 				<h:outputText value="Id"></h:outputText>
-				<p:inputText disabled="true" value="#{TipoProdutoControl.tipoProduto.id}"></p:inputText>
+				<p:inputText disabled="true"
+					value="#{TipoProdutoControl.tipoProduto.id}"></p:inputText>
 				<h:outputText value="Descrição"></h:outputText>
 				<p:inputText value="#{TipoProdutoControl.tipoProduto.descricao}"></p:inputText>
 				<p:commandButton actionListener="#{TipoProdutoControl.confirmar }"
 					value="Confirmar" update="tipoProdutos, panel"></p:commandButton>
+				<a href="menuADM.html">
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 			</h:panelGrid>
 		</p:panel>
 
-		<p:dataTable id="tipoProdutos" value="#{TipoProdutoControl.tiposProdutos }" var="cont"
-			width="100%" emptyMessage="Sem registros">
+		<p:dataTable id="tipoProdutos"
+			value="#{TipoProdutoControl.tiposProdutos }" var="cont" width="100%"
+			emptyMessage="Sem registros">
 			<f:facet name="header">
 				<h:outputText value="Lista de Tipos Produtos"></h:outputText>
 			</f:facet>
@@ -32,27 +37,30 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.descricao}" >
+			<p:column sortBy="#{cont.descricao}">
 				<f:facet name="header">
 					<h:outputText value="Nome Tipo Produto"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.descricao}"></h:outputText>
 			</p:column>
-			
+
+
 			<p:column width="5%">
 
 				<p:commandButton icon="ui-icon-trash"
 					style="width: 20px; height:20px;"
-					actionListener="#{TipoProdutoControl.excluir(cont)}" update="tipoProdutos">
+					actionListener="#{TipoProdutoControl.excluir(cont)}"
+					update="tipoProdutos">
 				</p:commandButton>
 				<p:commandButton icon="ui-icon-pencil"
 					style="width:20px; height:20px;"
 					actionListener="#{TipoProdutoControl.selecionarTipoProduto(cont)}"
 					onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
+
 			</p:column>
 
-			
+
 		</p:dataTable>
 
 	</ui:define>

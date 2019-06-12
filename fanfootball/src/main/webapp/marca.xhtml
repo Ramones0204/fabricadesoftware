@@ -7,8 +7,8 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
-	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
+
+		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<p:panel header="Marca" id="panel">
 			<h:panelGrid columns="2">
@@ -18,6 +18,9 @@
 				<p:inputText value="#{MarcaControl.marca.nomeMarca}"></p:inputText>
 				<p:commandButton actionListener="#{MarcaControl.confirmar }"
 					value="Confirmar" update="marcas, panel"></p:commandButton>
+				<a href="menuADM.html">
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 			</h:panelGrid>
 		</p:panel>
 
@@ -32,13 +35,13 @@
 				</f:facet>
 				<h:outputText value="#{cont.id}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.nomeMarca}" >
+			<p:column sortBy="#{cont.nomeMarca}">
 				<f:facet name="header">
 					<h:outputText value="Nome Marca"></h:outputText>
 				</f:facet>
 				<h:outputText value="#{cont.nomeMarca}"></h:outputText>
 			</p:column>
-			
+
 			<p:column width="5%">
 
 				<p:commandButton icon="ui-icon-trash"
@@ -50,10 +53,10 @@
 					actionListener="#{MarcaControl.selecionarMarcas(cont)}"
 					onclick="PF('dialogNovoContato').show();">
 				</p:commandButton>
-				
+
 			</p:column>
 
-			
+
 		</p:dataTable>
 
 	</ui:define>

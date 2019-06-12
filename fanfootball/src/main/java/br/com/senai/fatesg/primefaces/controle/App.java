@@ -1,13 +1,15 @@
 package br.com.senai.fatesg.primefaces.controle;
 
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  * Hello world!
  *
  */
 public class App {
-	/*
+	
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Maxwell\\Documents\\chromedriver.exe");
 
@@ -35,5 +37,5 @@ public class App {
 
 		driver.close();
 	}
-	*/
+	
 }

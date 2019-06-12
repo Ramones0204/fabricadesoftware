@@ -125,7 +125,7 @@
 					<f:selectItem itemLabel="Venezuela" itemValue="Venezuela" />
 				</p:selectOneMenu>
 				<h:outputText value="Ligas"></h:outputText>
-				
+
 				<p:selectOneMenu id="listaLigas" autoUpdate="true"
 					value="#{TimeControl.liga}" converter="objectConverter"
 					ajax="false" required="false">
@@ -135,6 +135,9 @@
 				</p:selectOneMenu>
 				<p:commandButton actionListener="#{TimeControl.confirmar }"
 					value="Confirmar" update="times, panel"></p:commandButton>
+				<a href="menuADM.html">
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 
 			</h:panelGrid>
 		</p:panel>

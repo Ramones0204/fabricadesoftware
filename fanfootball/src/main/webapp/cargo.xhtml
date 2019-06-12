@@ -9,10 +9,12 @@
 	<ui:define name="corpo">
 	
 	
+	
 	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
 
 
 		<p:panel header="Gestão de Cargo" id="panel">
+	
 			<h:panelGrid columns="2">
 				<h:outputText value="Id"></h:outputText>
 				<p:inputText disabled="true" value="#{CargoControl.cargo.id }"></p:inputText>
@@ -23,6 +25,10 @@
 				<p:commandButton actionListener="#{CargoControl.confirmar }"
 					value="Salvar" update="cargos, panel">
 				</p:commandButton>
+				<a href="menuADM.html">
+			<button type="button" class="btn btn-info">Voltar</button>
+		</a>
+				
 				
 					
 			</h:panelGrid>

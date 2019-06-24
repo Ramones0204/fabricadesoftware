@@ -1,6 +1,6 @@
 package br.com.senai.fatesg.primefaces.entidade;
 
-import java.io.Serializable;
+
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -10,24 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-import br.com.ambientinformatica.jpa.util.CpfCnpj;
-import br.com.ambientinformatica.util.AmbientValidator;
-import br.com.ambientinformatica.util.Entidade;
-
 @Entity
-public class Cliente extends Entidade implements Serializable  {
+public class Cliente   {
 
-	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(generator = "cliente_seq", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "cliente_seq", sequenceName = "cliente_seq", allocationSize = 1, initialValue = 1)
-	private long id;
-	
+	private int id;	
 	private String nome;
 	private String nomeSocial;
-	
-	@CpfCnpj(message = "CPF inválido teste", groups = AmbientValidator.class)
+
 	@Column(unique = true )	
 	private String cpf;
 	
@@ -41,7 +35,7 @@ public class Cliente extends Entidade implements Serializable  {
 
 
 
-	public Object getId() {
+	public int getId() {
 		return id;
 	}
 

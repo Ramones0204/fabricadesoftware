@@ -16,7 +16,6 @@ public class Contato extends Entidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(unique = true, nullable = false )
-	@Email(message = "Informe um endereço de e-mail válido", groups = AmbientValidator.class)	
 	private String email;
 	
 	private String telefoneFixo;

@@ -15,7 +15,7 @@ public class EmailJava {
 			Email email = new SimpleEmail();
 			email.setHostName("smtp.googlemail.com");
 			email.setSmtpPort(465);
-			email.setAuthenticator(new DefaultAuthenticator("ramonroliveirafilho@gmail.com", "1104Saopaulo"));
+			email.setAuthenticator(new DefaultAuthenticator("fanfootballads@gmail.com", "futebol.10"));
 			email.setSSLOnConnect(true);
 			email.setFrom("fanfootballads@gmail.com");
 			email.setSubject("TestMail");

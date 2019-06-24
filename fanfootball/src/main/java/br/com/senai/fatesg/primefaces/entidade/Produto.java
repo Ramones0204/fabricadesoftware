@@ -21,7 +21,7 @@ public class Produto {
 	private double preco;
 	private String cor;
 	@Lob
-	private byte[] imagem;
+	private byte[] imagemProduto;
 	@ManyToOne
 	private Marca marca;
 	@ManyToOne
@@ -114,10 +114,10 @@ public class Produto {
 		this.tipoProduto = tipoProduto;
 	}
 	public byte[] getImagem() {
-		return imagem;
+		return imagemProduto;
 	}
 	public void setImagem(byte[] imagem) {
-		this.imagem = imagem;
+		this.imagemProduto = imagem;
 	}
 	
 	

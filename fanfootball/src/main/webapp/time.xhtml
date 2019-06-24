@@ -130,7 +130,7 @@
 					value="#{TimeControl.liga}" converter="objectConverter"
 					ajax="false" required="false">
 					<f:selectItem itemLabel="Selecione" itemValue="" />
-					<f:selectItems value="#{LigaControl.ligas}" var="liga"
+					<f:selectItems value="#{TimeControl.ligas}" var="liga"
 						itemLabel="#{liga.nomeLiga}" itemValue="#{liga}" />
 				</p:selectOneMenu>
 				<p:commandButton actionListener="#{TimeControl.confirmar }"

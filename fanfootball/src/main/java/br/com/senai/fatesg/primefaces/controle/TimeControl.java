@@ -33,7 +33,7 @@ public class TimeControl {
 	@PostConstruct
 	public void init() {
 		listar(null);
-		listarLiga(null);
+		listarLiga();
 	}
 
 	public void confirmar(ActionEvent evt) {
@@ -130,10 +130,10 @@ public class TimeControl {
 		}
 	}
 
-	public void listarLiga(ActionEvent evt) {
+	public void listarLiga() {
 		try {
+			ligas = new ArrayList<Liga>();
 			ligas = ligaDao.listar();
-
 		} catch (Exception e) {
 			UtilFaces.addMensagemFaces(e.getMessage());
 		}

@@ -11,7 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="css/Menu/style2.css" />
 
 		<p:panel header="Produto" id="panel">
-			<h:form enctype="multipart/form-data">
 				<h:panelGrid columns="4">
 					<h:outputText value="Id"></h:outputText>
 					<p:inputText disabled="true"
@@ -91,12 +90,11 @@
 							itemValue="#{TipoProduto}" />
 					</p:selectOneMenu>
 
-
-
 					<p:commandButton actionListener="#{ProdutoControl.confirmar }"
-						value="Confirmar" update="produtos, panel"></p:commandButton>
+					value="Confirmar" update="produtos, panel"></p:commandButton>
+
+					
 				</h:panelGrid>
-			</h:form>
 
 		</p:panel>
 
@@ -143,4 +141,4 @@
 		</p:dataTable>
 
 	</ui:define>
-</ui:composition>
+</ui:composition>	

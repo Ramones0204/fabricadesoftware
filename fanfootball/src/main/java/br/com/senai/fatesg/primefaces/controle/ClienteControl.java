@@ -7,7 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -19,13 +18,14 @@ import br.com.senai.fatesg.primefaces.util.SendEmail;
 
 @Named("ClienteControl")
 @Scope("conversation")
-public class ClienteControl  {
+public class ClienteControl {
 
 	private Cliente cliente = new Cliente();
 	private Contato contato = new Contato();
 	@Autowired
 	private ClienteDao clienteDao;
 	private List<Cliente> clientes = new ArrayList<Cliente>();
+
 	@PostConstruct
 	public void init() {
 		listar(null);
@@ -52,7 +52,7 @@ public class ClienteControl  {
 		if (cliente.getCpf().isEmpty()) {
 			UtilFaces.addMensagemFaces("O CPF deve ser informado");
 		}
-		
+
 		if (!cliente.getCpf().isEmpty()) {
 			if (cliente.getCpf().equals("00000000000") || cliente.getCpf().equals("11111111111")
 					|| cliente.getCpf().equals("2222222222") || cliente.getCpf().equals("3333333333")
@@ -60,28 +60,27 @@ public class ClienteControl  {
 					|| cliente.getCpf().equals("6666666666") || cliente.getCpf().equals("7777777777")
 					|| cliente.getCpf().equals("8888888888") || cliente.getCpf().equals("9999999999")) {
 				UtilFaces.addMensagemFaces("CPF invalido");
-				
-	}
-	else if (cliente.getId() == null) {
+
+			} else if (cliente.getId() == 0) {
 				try {
 					clienteDao.incluir(cliente);
 					SendEmail s = new SendEmail(cliente.getContato().getEmail());
 					s.start();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
-				//	listar(evt);
-					
+					// listar(evt);
+
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
-					UtilFaces.addMensagemFaces("CPF ou Email já cadastrado" );
+					UtilFaces.addMensagemFaces("CPF ou Email já cadastrado");
 					UtilFaces.addMensagemFaces(e.getMessage());
-					
+
 				}
 			} else {
 				try {
 					clienteDao.alterar(cliente);
 					UtilFaces.addMensagemFaces("Cliente" + cliente.getNome() + " Alterado com sucesso");
-				//	listar(evt);
-					
+					// listar(evt);
+
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());
 				}
@@ -157,9 +156,7 @@ public class ClienteControl  {
 
 	public void setContato(Contato contato) {
 		this.contato = contato;
-	
+
 	}
-
-
 
 }

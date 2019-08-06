@@ -67,7 +67,7 @@ public class ClienteControl {
 					SendEmail s = new SendEmail(cliente.getContato().getEmail());
 					s.start();
 					UtilFaces.addMensagemFaces("Cliente Salvo com sucesso");
-					// listar(evt);
+					listar(evt);
 
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao inserir o cliente");
@@ -79,7 +79,7 @@ public class ClienteControl {
 				try {
 					clienteDao.alterar(cliente);
 					UtilFaces.addMensagemFaces("Cliente" + cliente.getNome() + " Alterado com sucesso");
-					// listar(evt);
+					listar(evt);
 
 				} catch (Exception e) {
 					UtilFaces.addMensagemFaces("Erro ao Deletar o Cliente " + cliente.getId());

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="corpo">
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
+
+
+		<p:panel header="Gestão de Cupom" id="panel">
+	
+			<h:panelGrid columns="2">
+				<h:outputText value="Id"></h:outputText>
+				<p:inputText disabled="true" value="#{CupomDescontoControl.cupomDesconto.id }"></p:inputText>
+				<h:outputText value="Nome"></h:outputText>
+				<p:inputText value="#{CupomDescontoControl.cupomDesconto.nomeCupom }"></p:inputText>
+				<h:outputText value="Valor Desconto %"></h:outputText>
+				<p:inputMask value="#{CupomDescontoControl.cupomDesconto.valorDesconto }"></p:inputMask>
+				<p:commandButton actionListener="#{CupomDescontoControl.confirmar }"
+					value="Salvar" update="cupons, panel">
+				</p:commandButton>
+				<a href="menuADM.html">
+			<button type="button" class="btn btn-info">Voltar</button>
+		</a>
+				
+				
+					
+			</h:panelGrid>
+		</p:panel>
+
+		<p:dataTable id="cupons" value="#{CupomDescontoControl.cupons }" var="cont"
+			width="100%" emptyMessage="Sem registros">
+			<f:facet name="header">
+				<h:outputText value="Lista de Cupons"></h:outputText>
+			</f:facet>
+			<p:column sortBy="#{cont.id}" width="5%">
+				<f:facet name="header">
+					<h:outputText value="ID"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.id}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.nomeCupom}">
+				<f:facet name="header">
+					<h:outputText value="Nome Cupom"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.nomeCupom}"></h:outputText>
+			</p:column>
+			<p:column sortBy="#{cont.valorDesconto }" width="25%">
+				<f:facet name="header">
+					<h:outputText value="Valor Desconto"></h:outputText>
+				</f:facet>
+				<h:outputText value="#{cont.valorDesconto}"></h:outputText>
+			</p:column>
+			
+			<p:column width="5%">
+
+				<p:commandButton icon="ui-icon-trash"
+					style="width: 20px; height:20px;"
+					actionListener="#{CupomDescontoControl.excluir(cont)}" update="cupons">
+				</p:commandButton>
+				<p:commandButton icon="ui-icon-pencil"
+					style="width:20px; height:20px;"
+					actionListener="#{CupomDescontoControl.selecionarCupomParaEdicao(cont)}"
+					onclick="PF('dialogNovoContato').show();">
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+
+	</ui:define>
+</ui:composition>

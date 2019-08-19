@@ -95,7 +95,7 @@
     <mime-type>application/xml</mime-type>
   </mime-mapping>
   <context-param>
-    <param-name>primefaces.THEME</param-name>
+    <param-name>Bootstrap.THEME</param-name>
     <param-value>redmond</param-value>
 </context-param>
 </web-app>

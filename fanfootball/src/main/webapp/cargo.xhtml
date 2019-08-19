@@ -7,9 +7,6 @@
 	xmlns:a="http://www.ambientinformatica.com.br/jsf2"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="corpo">
-	
-	
-	
 	<link rel="stylesheet" type="text/css" href="css/Menu/style2.css"/>
 
 
@@ -22,15 +19,15 @@
 				<p:inputText value="#{CargoControl.cargo.nomeCargo }"></p:inputText>
 				<h:outputText value="Salario"></h:outputText>
 				<p:inputMask value="#{CargoControl.cargo.salario }"></p:inputMask>
-				<p:commandButton actionListener="#{CargoControl.confirmar }"
-					value="Salvar" update="cargos, panel">
+				
+				<p:commandButton styleClass="GreenButton" actionListener="#{CargoControl.confirmar }"
+					value="Salvar" update="cargos, panel" >
 				</p:commandButton>
+				
 				<a href="menuADM.html">
-			<button type="button" class="btn btn-info">Voltar</button>
-		</a>
 				
-				
-					
+					<button type="button" class="btn btn-info">Voltar</button>
+				</a>
 			</h:panelGrid>
 		</p:panel>
 
@@ -51,7 +48,7 @@
 				</f:facet>
 				<h:outputText value="#{cont.nomeCargo}"></h:outputText>
 			</p:column>
-			<p:column sortBy="#{cont.salario }" width="25%">
+			<p:column sortBy="#{cont.salario}" width="25%">
 				<f:facet name="header">
 					<h:outputText value="Salario"></h:outputText>
 				</f:facet>

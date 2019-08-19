@@ -1,12 +1,19 @@
 package br.com.senai.fatesg.primefaces.controle;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.event.ActionEvent;
+import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+
 import br.com.ambientinformatica.ambientjsf.util.UtilFaces;
 import br.com.ambientinformatica.jpa.exception.PersistenciaException;
 import br.com.senai.fatesg.primefaces.entidade.Gola;
@@ -21,6 +28,7 @@ import br.com.senai.fatesg.primefaces.persistencia.MarcaDao;
 import br.com.senai.fatesg.primefaces.persistencia.ProdutoDao;
 import br.com.senai.fatesg.primefaces.persistencia.TimeDao;
 import br.com.senai.fatesg.primefaces.persistencia.TipoProdutoDao;
+import br.com.senai.fatesg.primefaces.util.ImagemService;
 
 @Named("ProdutoControl")
 @Scope("conversation")
@@ -42,6 +50,8 @@ public class ProdutoControl {
 	private TipoProduto tipoProduto = new TipoProduto();
 	@Autowired
 	private TipoProdutoDao tipoProdutoDao;
+	@Inject
+	private ImagemService imamgemSevice;
 
 	@PostConstruct
 	public void init() {
@@ -97,7 +107,28 @@ public class ProdutoControl {
 		}
 		
 	}
-
+	
+	
+	public void upload(FileUploadEvent evt) {
+		UploadedFile uploadedFile = evt.getFile();
+		try {
+			String imagem = imamgemSevice.salvarFotoTemp(uploadedFile.getFileName(), uploadedFile.getContents());
+			produto.setImagemProduto(imagem);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public void removerImagem() throws IOException {
+		try {
+			imamgemSevice.deletarTemp(produto.getImagemProduto());
+		} catch (Exception e) {
+			// TODO: handle exception	
+			UtilFaces.addMensagemFaces(e.getMessage());
+		}
+		produto.setImagemProduto(null);
+		
+	}
+	
 	public void listar(ActionEvent evt) {
 		try {
 			produtos = produtoDao.listar();

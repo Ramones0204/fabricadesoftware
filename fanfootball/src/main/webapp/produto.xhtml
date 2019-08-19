@@ -28,9 +28,17 @@
 					<h:outputText value="Preço "></h:outputText>
 					<p:inputText value="#{ProdutoControl.produto.preco}"></p:inputText>
 					<h:outputText value="Imagem "></h:outputText>
-					<p:fileUpload value="#{ProdutoControl.produto.imagem}"
-						mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-						dragDropSupport="true" />
+					<p:fileUpload value="#{ProdutoControl.upload}" auto = "true" label="imagem"
+						mode="simple" update="imagemPanel" />
+					<h:panelGroup id="imagemPanel">
+						<p:graphicImage value="#/produto-imagem?nome=#{ProdutoControl.produto.imagem}" 
+							/>
+							
+							<p:commandButton value="Remover Foto" 
+								
+								actionListener="#{ProdutoControl.removerImagem}"
+								process="@this" update="imagemPanel"/>
+					</h:panelGroup>
 					<h:outputText value="Gola"></h:outputText>
 					<p:selectOneMenu value="#{ProdutoControl.produto.gola}">
 						<f:selectItem itemLabel="Selecione" />

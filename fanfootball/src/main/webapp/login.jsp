@@ -22,7 +22,7 @@
 	</script>
 </head>
 <body>
-	<form action="j_spring_security_check" method="post" style="width: 0%;>
+	<form action="j_spring_security_check" method="post" style = "width: 50% ; background-color: black">
 		<div class="wrapper"  >
 
 			<div class="span4 sidebar" >
